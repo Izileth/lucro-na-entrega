@@ -16,7 +16,7 @@ const buttonVariants = cva(
         ghost: "hover:bg-secondary text-primary",
         link: "text-primary underline-offset-4 hover:underline",
         torque:
-          "gradient-torque text-accent-foreground font-bold shadow-torque hover:scale-[1.03] hover:brightness-110 transition-all duration-300",
+          "gradient-torque text-cta-foreground font-bold shadow-torque hover:scale-[1.03] hover:brightness-110 transition-all duration-300",
       },
       size: {
         default: "h-10 px-4 py-2",

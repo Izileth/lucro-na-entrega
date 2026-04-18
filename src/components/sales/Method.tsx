@@ -53,7 +53,7 @@ const Method = () => {
               className="relative flex gap-6 rounded-3xl border border-border bg-background p-8 shadow-card"
             >
               <div className="shrink-0">
-                <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-primary text-accent">
+                <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-primary text-cta">
                   <Icon className="h-8 w-8" />
                 </div>
               </div>

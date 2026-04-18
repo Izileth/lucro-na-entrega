@@ -9,13 +9,13 @@ const StickyOfferBar = () => {
       <div className="container mx-auto flex flex-col items-center justify-between gap-3 px-4 py-2.5 sm:flex-row sm:gap-6 sm:py-3">
         <div className="flex items-center gap-3">
           <span className="relative flex h-2.5 w-2.5 shrink-0">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
-            <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-accent" />
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cta opacity-75" />
+            <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-cta" />
           </span>
           <p className="text-xs font-semibold sm:text-sm">
             <span className="hidden sm:inline">Oferta exclusiva termina em </span>
             <span className="sm:hidden">Termina em </span>
-            <span className="font-display text-base font-bold tabular-nums text-accent sm:text-lg">
+            <span className="font-display text-base font-bold tabular-nums text-cta sm:text-lg">
               {pad(hours)}:{pad(minutes)}:{pad(seconds)}
             </span>
           </p>

@@ -10,13 +10,13 @@ const CountdownTimer = () => {
   ];
 
   return (
-    <div className="rounded-2xl border border-accent/30 bg-primary-foreground/5 p-5">
+    <div className="rounded-2xl border border-cta/30 bg-primary-foreground/5 p-5">
       <div className="flex items-center gap-2">
         <span className="relative flex h-2.5 w-2.5">
-          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
-          <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-accent" />
+          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cta opacity-75" />
+          <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-cta" />
         </span>
-        <p className="text-xs font-bold uppercase tracking-widest text-accent">
+        <p className="text-xs font-bold uppercase tracking-widest text-cta">
           Oferta termina em
         </p>
       </div>
@@ -27,7 +27,7 @@ const CountdownTimer = () => {
             key={b.label}
             className="rounded-xl border border-primary-foreground/10 bg-primary px-3 py-3 text-center tabular-nums"
           >
-            <div className="font-display text-3xl font-bold leading-none text-accent md:text-4xl">
+            <div className="font-display text-3xl font-bold leading-none text-cta md:text-4xl">
               {b.value}
             </div>
             <div className="mt-1.5 text-[10px] font-semibold uppercase tracking-widest text-primary-foreground/60">

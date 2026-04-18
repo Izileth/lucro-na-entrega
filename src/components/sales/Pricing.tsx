@@ -1,5 +1,6 @@
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import CountdownTimer from "./CountdownTimer";
 
 const features = [
   "Acesso vitalício ao método ProMota completo",
@@ -59,7 +60,11 @@ const Pricing = () => {
                 ou 12x de <strong className="text-primary-foreground">R$ 19,70</strong> no cartão
               </p>
 
-              <Button variant="torque" size="xl" className="mt-8 w-full">
+              <div className="mt-8">
+                <CountdownTimer />
+              </div>
+
+              <Button variant="torque" size="xl" className="mt-6 w-full">
                 Quero transformar minhas entregas em lucro
               </Button>
               <p className="mt-3 text-center text-xs text-primary-foreground/60">

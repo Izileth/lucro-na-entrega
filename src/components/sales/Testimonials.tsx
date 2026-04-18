@@ -26,11 +26,11 @@ const Testimonials = () => {
     <section className="bg-secondary/40 py-24 md:py-32">
       <div className="container mx-auto px-6">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-accent">
+          <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-cta">
             Histórias de pista
           </p>
           <h2 className="font-display text-4xl font-bold tracking-tighter text-primary md:text-5xl">
-            Quem aplica, lucra mais.
+            Quem aplica, <span className="text-cta">lucra mais</span>.
           </h2>
         </div>
 
@@ -40,7 +40,7 @@ const Testimonials = () => {
               key={t.name}
               className="flex flex-col rounded-3xl border border-border bg-background p-8 shadow-card"
             >
-              <div className="flex gap-1 text-accent">
+              <div className="flex gap-1 text-cta">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star key={i} className="h-4 w-4 fill-current" />
                 ))}

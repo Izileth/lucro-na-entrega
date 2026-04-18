@@ -15,12 +15,12 @@ const Hero = () => {
       <div className="container mx-auto grid items-center gap-16 px-6 pb-24 pt-16 md:grid-cols-[1.1fr_1fr] md:pt-24">
         <div className="animate-fade-up">
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-secondary px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-            <Zap className="h-3.5 w-3.5 text-accent" />
+            <Zap className="h-3.5 w-3.5 text-cta" />
             Para entregadores que querem mais
           </div>
 
           <h1 className="font-display text-5xl font-bold leading-[0.95] tracking-tighter text-primary sm:text-6xl md:text-7xl">
-            Transforme cada entrega em <span className="text-accent">lucro de verdade</span>.
+            Transforme cada entrega em <span className="text-cta">lucro de verdade</span>.
           </h1>
 
           <p className="mt-8 max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl">

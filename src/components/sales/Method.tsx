@@ -33,11 +33,11 @@ const Method = () => {
       <div className="container mx-auto px-6">
         <div className="grid items-end gap-12 md:grid-cols-2">
           <div>
-            <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-accent">
+            <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-cta">
               O Método ProMota
             </p>
             <h2 className="font-display text-4xl font-bold tracking-tighter text-primary md:text-5xl">
-              4 passos para sair do sufoco e entrar no lucro.
+              4 passos para sair do sufoco e <span className="text-cta">entrar no lucro</span>.
             </h2>
           </div>
           <p className="text-lg leading-relaxed text-muted-foreground">
@@ -58,7 +58,7 @@ const Method = () => {
                 </div>
               </div>
               <div>
-                <span className="font-display text-sm font-bold tracking-widest text-accent">
+                <span className="font-display text-sm font-bold tracking-widest text-cta">
                   PASSO {step}
                 </span>
                 <h3 className="mt-1 font-display text-2xl font-bold text-primary">{title}</h3>

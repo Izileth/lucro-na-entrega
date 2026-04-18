@@ -73,7 +73,7 @@ const Hero = () => {
             />
             {/* Floating stat card */}
             <div className="absolute bottom-6 left-6 right-6 rounded-2xl border border-white/10 bg-primary/90 p-5 backdrop-blur-md">
-              <p className="text-xs font-semibold uppercase tracking-widest text-accent">
+              <p className="text-xs font-semibold uppercase tracking-widest text-cta">
                 Ganho médio mensal
               </p>
               <p className="mt-2 font-display text-4xl font-bold text-primary-foreground">

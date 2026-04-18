@@ -41,7 +41,7 @@ const Pains = () => {
               key={title}
               className="group relative overflow-hidden rounded-2xl border border-border bg-background p-8 shadow-card transition-all hover:-translate-y-1 hover:border-accent/40"
             >
-              <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-primary text-accent">
+              <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-primary text-cta">
                 <Icon className="h-7 w-7" />
               </div>
               <h3 className="font-display text-2xl font-bold text-primary">{title}</h3>

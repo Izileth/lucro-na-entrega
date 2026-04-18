@@ -49,7 +49,7 @@ const Testimonials = () => {
                 "{t.text}"
               </p>
               <div className="mt-8 flex items-center gap-4 border-t border-border pt-6">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-sm font-bold text-accent">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-sm font-bold text-cta">
                   {t.initials}
                 </div>
                 <div>

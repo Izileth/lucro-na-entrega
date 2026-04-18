@@ -35,12 +35,12 @@ const Pricing = () => {
             <div className="relative rounded-[1.75rem] bg-primary p-10 text-primary-foreground md:p-12">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-semibold uppercase tracking-widest text-accent">
+                  <p className="text-sm font-semibold uppercase tracking-widest text-cta">
                     Plano Único · Acesso Vitalício
                   </p>
                   <h3 className="mt-2 font-display text-3xl font-bold">ProMota Completo</h3>
                 </div>
-                <span className="rounded-full bg-accent px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-accent-foreground">
+                <span className="rounded-full bg-cta px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-cta-foreground">
                   Mais escolhido
                 </span>
               </div>
@@ -51,7 +51,7 @@ const Pricing = () => {
                 </span>
               </div>
               <div className="flex items-baseline gap-2">
-                <span className="font-display text-7xl font-bold tracking-tighter text-accent">
+                <span className="font-display text-7xl font-bold tracking-tighter text-cta">
                   R$ 197
                 </span>
                 <span className="text-base text-primary-foreground/70">à vista</span>
@@ -74,7 +74,7 @@ const Pricing = () => {
               <ul className="mt-10 space-y-4 border-t border-primary-foreground/10 pt-8">
                 {features.map((f) => (
                   <li key={f} className="flex items-start gap-3">
-                    <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent text-accent-foreground">
+                    <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-cta text-cta-foreground">
                       <Check className="h-3.5 w-3.5" strokeWidth={3} />
                     </span>
                     <span className="text-base text-primary-foreground/90">{f}</span>

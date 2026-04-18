@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
   return (
-    <nav className="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-xl">
+    <nav className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur-xl">
       <div className="container mx-auto flex items-center justify-between px-6 py-5">
         <a href="#top" className="font-display text-2xl font-bold tracking-tighter text-primary">
           PRO<span className="text-accent">MOTA</span>

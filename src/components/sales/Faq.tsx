@@ -33,11 +33,11 @@ const Faq = () => {
     <section id="faq" className="bg-secondary/40 py-24 md:py-32">
       <div className="container mx-auto px-6">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-accent">
+          <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-cta">
             Dúvidas frequentes
           </p>
           <h2 className="font-display text-4xl font-bold tracking-tighter text-primary md:text-5xl">
-            Antes de você apertar o gatilho.
+            Antes de você <span className="text-cta">apertar o gatilho</span>.
           </h2>
         </div>
 

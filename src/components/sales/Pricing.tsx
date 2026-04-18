@@ -17,11 +17,11 @@ const Pricing = () => {
     <section id="planos" className="py-24 md:py-32">
       <div className="container mx-auto px-6">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-accent">
+          <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-cta">
             Investimento
           </p>
           <h2 className="font-display text-4xl font-bold tracking-tighter text-primary md:text-5xl">
-            Menos de uma diária. Lucro pra vida toda.
+            Menos de uma diária. <span className="text-cta">Lucro pra vida toda.</span>
           </h2>
           <p className="mt-6 text-lg text-muted-foreground">
             Um único pagamento. Acesso vitalício. E uma garantia que tira todo o risco do seu lado.

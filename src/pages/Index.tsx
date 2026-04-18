@@ -8,10 +8,12 @@ import Pricing from "@/components/sales/Pricing";
 import Faq from "@/components/sales/Faq";
 import FinalCta from "@/components/sales/FinalCta";
 import Footer from "@/components/sales/Footer";
+import StickyOfferBar from "@/components/sales/StickyOfferBar";
 
 const Index = () => {
   return (
     <main className="min-h-screen bg-background">
+      <StickyOfferBar />
       <Navbar />
       <Hero />
       <Pains />

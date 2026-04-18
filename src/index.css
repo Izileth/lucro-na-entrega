@@ -26,27 +26,32 @@
     --muted: 240 5% 96%;
     --muted-foreground: 240 4% 46%;
 
-    /* Torque — laranja vibrante (signature) */
-    --accent: 20 100% 50%;
+    /* Accent — preto profundo (signature) */
+    --accent: 240 6% 10%;
     --accent-foreground: 0 0% 100%;
-    --accent-glow: 20 100% 60%;
+    --accent-glow: 240 6% 20%;
+
+    /* CTA — verde vibrante */
+    --cta: 142 72% 42%;
+    --cta-foreground: 0 0% 100%;
+    --cta-glow: 142 72% 52%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
     --border: 240 6% 90%;
     --input: 240 6% 90%;
-    --ring: 20 100% 50%;
+    --ring: 142 72% 42%;
 
     --radius: 0.875rem;
 
     /* Gradients */
-    --gradient-torque: linear-gradient(135deg, hsl(20 100% 50%), hsl(15 100% 45%));
+    --gradient-torque: linear-gradient(135deg, hsl(142 72% 42%), hsl(142 72% 35%));
     --gradient-asphalt: linear-gradient(180deg, hsl(240 6% 10%), hsl(240 8% 4%));
-    --gradient-glow: radial-gradient(ellipse at top, hsl(20 100% 50% / 0.25), transparent 60%);
+    --gradient-glow: radial-gradient(ellipse at top, hsl(142 72% 42% / 0.25), transparent 60%);
 
     /* Shadows */
-    --shadow-torque: 0 20px 50px -15px hsl(20 100% 50% / 0.45);
+    --shadow-torque: 0 20px 50px -15px hsl(142 72% 42% / 0.45);
     --shadow-elevated: 0 30px 60px -20px hsl(240 6% 10% / 0.25);
     --shadow-card: 0 2px 0 hsl(240 6% 90%), 0 12px 32px -16px hsl(240 6% 10% / 0.15);
 
@@ -77,11 +82,11 @@
     --secondary-foreground: 0 0% 98%;
     --muted: 240 5% 15%;
     --muted-foreground: 240 4% 65%;
-    --accent: 20 100% 55%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 0 0% 98%;
+    --accent-foreground: 240 6% 10%;
     --border: 240 5% 18%;
     --input: 240 5% 18%;
-    --ring: 20 100% 55%;
+    --ring: 142 72% 50%;
   }
 }
 

@@ -1,4 +1,5 @@
 import { Target, Map, Wallet, BarChart3 } from "lucide-react";
+import { Reveal } from "@/components/ui/reveal";
 
 const steps = [
   {
@@ -31,7 +32,7 @@ const Method = () => {
   return (
     <section id="metodo" className="py-24 md:py-32">
       <div className="container mx-auto px-6">
-        <div className="grid items-end gap-12 md:grid-cols-2">
+        <Reveal className="grid items-end gap-12 md:grid-cols-2">
           <div>
             <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-cta">
               O Método ProMota
@@ -44,27 +45,28 @@ const Method = () => {
             Não é mais um curso teórico. É um sistema testado por milhares de entregadores
             no Brasil — direto, prático e focado em resultado no fim do mês.
           </p>
-        </div>
+        </Reveal>
 
         <div className="mt-16 grid gap-6 md:grid-cols-2">
-          {steps.map(({ icon: Icon, step, title, text }) => (
-            <article
-              key={step}
-              className="relative flex gap-6 rounded-3xl border border-border bg-background p-8 shadow-card"
-            >
-              <div className="shrink-0">
-                <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-primary text-cta">
-                  <Icon className="h-8 w-8" />
+          {steps.map(({ icon: Icon, step, title, text }, index) => (
+            <Reveal key={step} delay={index * 100}>
+              <article
+                className="relative flex h-full gap-6 rounded-3xl border border-border bg-background p-8 shadow-card transition-all hover:border-cta/20"
+              >
+                <div className="shrink-0">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-primary text-cta">
+                    <Icon className="h-8 w-8" />
+                  </div>
                 </div>
-              </div>
-              <div>
-                <span className="font-display text-sm font-bold tracking-widest text-cta">
-                  PASSO {step}
-                </span>
-                <h3 className="mt-1 font-display text-2xl font-bold text-primary">{title}</h3>
-                <p className="mt-2 text-base leading-relaxed text-muted-foreground">{text}</p>
-              </div>
-            </article>
+                <div>
+                  <span className="font-display text-sm font-bold tracking-widest text-cta">
+                    PASSO {step}
+                  </span>
+                  <h3 className="mt-1 font-display text-2xl font-bold text-primary">{title}</h3>
+                  <p className="mt-2 text-base leading-relaxed text-muted-foreground">{text}</p>
+                </div>
+              </article>
+            </Reveal>
           ))}
         </div>
       </div>

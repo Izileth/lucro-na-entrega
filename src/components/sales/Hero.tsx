@@ -94,28 +94,6 @@ const Hero = () => {
           </div>
         </div>
       </div>
-
-      {/* Logo marquee */}
-      <div className="border-y border-border bg-secondary/40 py-6">
-        <div className="container mx-auto px-6">
-          <p className="mb-4 text-center text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-            Compatível com os principais apps
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-3 text-base font-bold text-primary/60">
-            <span>iFood</span>
-            <span>·</span>
-            <span>Uber Eats</span>
-            <span>·</span>
-            <span>Rappi</span>
-            <span>·</span>
-            <span>99Food</span>
-            <span>·</span>
-            <span>Loggi</span>
-            <span>·</span>
-            <span>Lalamove</span>
-          </div>
-        </div>
-      </div>
     </header>
   );
 };

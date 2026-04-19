@@ -1,14 +1,12 @@
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import CountdownTimer from "./CountdownTimer";
+import { Reveal } from "@/components/ui/reveal";
 
 const features = [
   "Acesso vitalício ao método ProMota completo",
-  "Planilha de controle financeiro do entregador",
   "Mapa de zonas e horários de alta demanda",
-  "Comunidade fechada com +8.000 entregadores",
-  "Atualizações semanais com novas estratégias",
-  "Suporte direto pelo WhatsApp",
+
   "Garantia incondicional de 7 dias",
 ];
 
@@ -16,7 +14,7 @@ const Pricing = () => {
   return (
     <section id="planos" className="py-24 md:py-32">
       <div className="container mx-auto px-6">
-        <div className="mx-auto max-w-3xl text-center">
+        <Reveal className="mx-auto max-w-3xl text-center">
           <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-cta">
             Investimento
           </p>
@@ -26,9 +24,9 @@ const Pricing = () => {
           <p className="mt-6 text-lg text-muted-foreground">
             Um único pagamento. Acesso vitalício. E uma garantia que tira todo o risco do seu lado.
           </p>
-        </div>
+        </Reveal>
 
-        <div className="mx-auto mt-16 max-w-2xl">
+        <Reveal className="mx-auto mt-16 max-w-2xl" delay={200}>
           <div className="relative overflow-hidden rounded-[2rem] border border-primary bg-primary p-1 shadow-elevated">
             <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-accent/30 blur-3xl" />
 
@@ -47,17 +45,17 @@ const Pricing = () => {
 
               <div className="mt-8 flex items-end gap-3">
                 <span className="text-base text-primary-foreground/60 line-through">
-                  De R$ 497
+                  De R$ 97
                 </span>
               </div>
               <div className="flex items-baseline gap-2">
                 <span className="font-display text-7xl font-bold tracking-tighter text-cta">
-                  R$ 197
+                  R$ 27
                 </span>
-                <span className="text-base text-primary-foreground/70">à vista</span>
+                <span className="text-base text-primary-foreground/70">à vista no Pix</span>
               </div>
               <p className="mt-1 text-sm text-primary-foreground/70">
-                ou 12x de <strong className="text-primary-foreground">R$ 19,70</strong> no cartão
+                ou 2x de <strong className="text-primary-foreground">R$ 13,50</strong> no cartão
               </p>
 
               <div className="mt-8">
@@ -83,7 +81,7 @@ const Pricing = () => {
               </ul>
             </div>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

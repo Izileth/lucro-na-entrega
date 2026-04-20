@@ -1,21 +1,21 @@
-import { TrendingDown, Clock, Wrench } from "lucide-react";
+import { TrendingDown, Clock, Wrench, AlertTriangle } from "lucide-react";
 import { Reveal } from "@/components/ui/reveal";
 
 const pains = [
   {
     icon: TrendingDown,
-    title: "Corrida de valor baixo",
-    text: "Aceitar qualquer pedido desperdiça combustível e tempo que poderiam virar entregas de margem maior.",
+    title: "A 'Cilada' da Corrida Barata",
+    text: "Aceitar qualquer pedido de R$ 5 faz você gastar combustível e tempo. No final do dia, você pagou para trabalhar e nem percebeu.",
   },
   {
     icon: Wrench,
-    title: "Desgaste prematuro da moto",
-    text: "Sem estratégia de rota, sua moto sofre o dobro e a manutenção corrói seu lucro líquido.",
+    title: "Sua Moto é um Passivo",
+    text: "Sem estratégia de rota, você roda km desnecessários. A manutenção vem antes do esperado e 'limpa' sua conta bancária.",
   },
   {
-    icon: Clock,
-    title: "Falta de previsão",
-    text: "Rodar sem saber onde estão as zonas de alta demanda é trabalhar com os olhos vendados.",
+    icon: AlertTriangle,
+    title: "Escravo do Algoritmo",
+    text: "Rodar sem saber as zonas de alta demanda é contar com a sorte. O algoritmo lucra com sua desinformação enquanto você fica parado esperando.",
   },
 ];
 
@@ -25,14 +25,14 @@ const Pains = () => {
       <div className="container mx-auto px-6">
         <Reveal className="mx-auto max-w-3xl text-center">
           <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-cta">
-            O que está te travando
+            A dura realidade da pista
           </p>
           <h2 className="font-display text-4xl font-bold tracking-tighter text-primary md:text-5xl">
-            Você roda o dia inteiro e o <span className="text-cta">dinheiro não sobra</span>?
+            Cansado de chegar em casa com as <span className="text-cta">mãos vazias</span>?
           </h2>
           <p className="mt-6 text-lg text-muted-foreground">
-            A maioria dos entregadores trabalha duro, mas perde lucro nos detalhes que
-            ninguém ensina.
+            A maioria dos entregadores confunde "rodar muito" com "ganhar muito". 
+            Trabalhar duro sem estratégia é a receita para o esgotamento.
           </p>
         </Reveal>
 

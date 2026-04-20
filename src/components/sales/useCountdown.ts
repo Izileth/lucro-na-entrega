@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-const TARGET_KEY = "promota_offer_deadline";
-const DURATION_MS = 24 * 60 * 60 * 1000; // 24h
+const TARGET_KEY = "fastmotors_v2_deadline";
+const DURATION_MS = 9 * 60 * 1000 + 47 * 1000; // 9m 47s
 
 export const getDeadline = () => {
   if (typeof window === "undefined") return Date.now() + DURATION_MS;

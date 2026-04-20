@@ -35,7 +35,7 @@ const Method = () => {
         <Reveal className="grid items-end gap-12 md:grid-cols-2">
           <div>
             <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-cta">
-              O Método ProMota
+              O Método FastMotors
             </p>
             <h2 className="font-display text-4xl font-bold tracking-tighter text-primary md:text-5xl">
               4 passos para sair do sufoco e <span className="text-cta">entrar no lucro</span>.
@@ -47,23 +47,23 @@ const Method = () => {
           </p>
         </Reveal>
 
-        <div className="mt-16 grid gap-6 md:grid-cols-2">
+        <div className="mt-16 grid gap-8 md:grid-cols-2">
           {steps.map(({ icon: Icon, step, title, text }, index) => (
             <Reveal key={step} delay={index * 100}>
               <article
-                className="relative flex h-full gap-6 rounded-3xl border border-border bg-background p-8 shadow-card transition-all hover:border-cta/20"
+                className="glass-card relative flex h-full gap-8 rounded-[2.5rem] p-10 transition-all duration-500 hover:shadow-torque/10"
               >
                 <div className="shrink-0">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-primary text-cta">
-                    <Icon className="h-8 w-8" />
+                  <div className="flex h-20 w-20 items-center justify-center rounded-[1.5rem] bg-primary text-cta shadow-torque">
+                    <Icon className="h-10 w-10" />
                   </div>
                 </div>
                 <div>
-                  <span className="font-display text-sm font-bold tracking-widest text-cta">
-                    PASSO {step}
+                  <span className="font-display text-xs font-black uppercase tracking-[0.2em] text-cta/60">
+                    ETAPA {step}
                   </span>
-                  <h3 className="mt-1 font-display text-2xl font-bold text-primary">{title}</h3>
-                  <p className="mt-2 text-base leading-relaxed text-muted-foreground">{text}</p>
+                  <h3 className="mt-2 font-display text-3xl font-bold text-primary leading-tight">{title}</h3>
+                  <p className="mt-4 text-lg leading-relaxed text-muted-foreground">{text}</p>
                 </div>
               </article>
             </Reveal>

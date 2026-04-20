@@ -6,19 +6,19 @@ const items = [
     name: "Renato Almeida",
     role: "Motoboy · São Paulo, SP",
     initials: "RA",
-    text: "Em 6 semanas, meu lucro líquido subiu 38%. O método me fez parar de aceitar corrida de qualquer jeito e focar no que paga.",
+    text: "Eu rodava no automático, aceitando praticamente tudo. No fim do mês parecia que ganhava bem, mas quando comecei a aplicar o método e cortar corridas ruins, percebi o quanto estava perdendo. Em 6 semanas, meu lucro líquido subiu 38% — sem trabalhar mais horas. Hoje eu escolho as corridas, não o contrário.",
   },
   {
     name: "Mariana Silva",
     role: "App de comida · Rio de Janeiro, RJ",
     initials: "MS",
-    text: "Eu rodava 12 horas e mal pagava as contas. Hoje rodo 9 horas e sobra dinheiro. Mudou minha vida e a da minha família.",
+    text: "Antes eu ficava 12 horas na rua e mesmo assim vivia apertada. Eu achava que o problema era falta de tempo, mas era estratégia. Ajustei minhas rotas, horários e regiões com base no método… resultado: reduzi para 9 horas por dia e comecei a ver dinheiro sobrando no fim do mês. Foi a primeira vez que senti controle de verdade.",
   },
   {
     name: "João Vitor",
-    role: "Entregador autônomo · BH, MG",
+    role: "Entregador autônomo · Belo Horizonte, MG",
     initials: "JV",
-    text: "A planilha de controle financeiro foi um divisor de águas. Pela primeira vez sei exatamente quanto ganho de verdade.",
+    text: "Eu nunca soube quanto realmente ganhava. Entrava dinheiro, mas também saía sem controle. Quando comecei a usar as dicas e aplicar o sistema de gestão, levei um choque: eu estava lucrando bem menos do que imaginava. Em poucos dias ajustei minha operação e hoje sei exatamente meu lucro por dia, por rota e por horário. Isso mudou completamente minha visão do trabalho.",
   },
 ];
 
@@ -35,27 +35,27 @@ const Testimonials = () => {
           </h2>
         </Reveal>
 
-        <div className="mt-16 grid gap-6 md:grid-cols-3">
+        <div className="mt-16 grid gap-8 md:grid-cols-3">
           {items.map((t, index) => (
             <Reveal key={t.name} delay={index * 100}>
               <article
-                className="flex h-full flex-col rounded-3xl border border-border bg-background p-8 shadow-card transition-all hover:border-cta/20"
+                className="glass-card flex h-full flex-col rounded-[2.5rem] p-10 transition-all duration-500 hover:-translate-y-2"
               >
-                <div className="flex gap-1 text-cta">
+                <div className="flex gap-1.5 text-cta">
                   {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} className="h-4 w-4 fill-current" />
+                    <Star key={i} className="h-5 w-5 fill-current" />
                   ))}
                 </div>
-                <p className="mt-6 flex-1 text-lg leading-relaxed text-primary">
+                <p className="mt-8 flex-1 text-xl leading-relaxed text-primary italic font-medium">
                   "{t.text}"
                 </p>
-                <div className="mt-8 flex items-center gap-4 border-t border-border pt-6">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-sm font-bold text-cta">
+                <div className="mt-10 flex items-center gap-5 border-t border-white/5 pt-8">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary text-base font-black text-cta shadow-torque">
                     {t.initials}
                   </div>
                   <div>
-                    <p className="font-bold text-primary">{t.name}</p>
-                    <p className="text-sm text-muted-foreground">{t.role}</p>
+                    <p className="font-display text-lg font-bold text-primary">{t.name}</p>
+                    <p className="text-sm font-semibold text-muted-foreground">{t.role}</p>
                   </div>
                 </div>
               </article>

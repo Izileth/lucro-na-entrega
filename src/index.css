@@ -48,25 +48,18 @@
     /* Gradients */
     --gradient-torque: linear-gradient(135deg, hsl(142 72% 42%), hsl(142 72% 35%));
     --gradient-asphalt: linear-gradient(180deg, hsl(240 6% 10%), hsl(240 8% 4%));
-    --gradient-glow: radial-gradient(ellipse at top, hsl(142 72% 42% / 0.25), transparent 60%);
+    --gradient-glow: radial-gradient(circle at center, hsl(142 72% 42% / 0.15), transparent 70%);
+    --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
 
     /* Shadows */
     --shadow-torque: 0 20px 50px -15px hsl(142 72% 42% / 0.45);
     --shadow-elevated: 0 30px 60px -20px hsl(240 6% 10% / 0.25);
     --shadow-card: 0 2px 0 hsl(240 6% 90%), 0 12px 32px -16px hsl(240 6% 10% / 0.15);
+    --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
 
     /* Motion */
     --transition-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
     --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
-
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
   .dark {
@@ -87,6 +80,7 @@
     --border: 240 5% 18%;
     --input: 240 5% 18%;
     --ring: 142 72% 50%;
+    --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
   }
 }
 
@@ -102,19 +96,21 @@
   body {
     @apply bg-background text-foreground antialiased;
     font-family: 'Inter', system-ui, sans-serif;
-    font-feature-settings: 'cv11', 'ss01';
+    font-feature-settings: 'cv11', 'ss01', 'kern';
+    text-rendering: optimizeLegibility;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Space Grotesk', system-ui, sans-serif;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.04em;
+    @apply leading-[1.1];
   }
 }
 
 @layer utilities {
   .font-display {
     font-family: 'Space Grotesk', system-ui, sans-serif;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.04em;
   }
 
   .text-balance {
@@ -127,6 +123,14 @@
 
   .gradient-asphalt {
     background: var(--gradient-asphalt);
+  }
+
+  .glass-card {
+    background: var(--gradient-glass);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: var(--shadow-glass);
   }
 
   .shadow-torque {

@@ -1,0 +1,16 @@
+<svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00FF94"></stop>
+      <stop offset="100%" stop-color="#00C853"></stop>
+    </linearGradient>
+  </defs>
+
+  <!-- Shape principal (orgânico, inspirado no exemplo) -->
+  <path d="M64 32 
+       C64 32, 128 32, 128 96 
+       C128 128, 192 128, 192 192 
+       C192 224, 160 224, 128 224 
+       L64 224 
+       Z" fill="url(#grad)"></path>
+</svg>

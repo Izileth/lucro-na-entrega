@@ -6,7 +6,7 @@ const StickyOfferBar = () => {
 
   return (
     <div className="sticky top-0 z-[60] w-full gradient-asphalt text-primary-foreground shadow-lg">
-      <div className="container mx-auto flex flex-col items-center justify-between gap-3 px-4 py-2.5 sm:flex-row sm:gap-6 sm:py-3">
+      <div className="container mx-auto flex flex-row items-center justify-between gap-3 px-4 py-2.5 sm:flex-row sm:gap-6 sm:py-3">
         <div className="flex items-center gap-3">
           <span className="relative flex h-2.5 w-2.5 shrink-0">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cta opacity-75" />
@@ -16,13 +16,13 @@ const StickyOfferBar = () => {
             <span className="hidden sm:inline">Oferta exclusiva termina em </span>
             <span className="sm:hidden">Termina em </span>
             <span className="font-display text-base font-bold tabular-nums text-cta sm:text-lg">
-              {pad(hours)}:{pad(minutes)}:{pad(seconds)}
+              {pad(minutes)}:{pad(seconds)}
             </span>
           </p>
         </div>
 
         <Button variant="torque" size="sm" asChild className="h-9 px-5 text-xs sm:text-sm">
-          <a href="#planos">Garantir agora</a>
+          <a href="https://pay.kiwify.com.br/qJdda9q" target="_blank" rel="noopener noreferrer">Garantir agora</a>
         </Button>
       </div>
     </div>

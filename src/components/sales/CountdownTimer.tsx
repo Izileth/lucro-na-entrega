@@ -4,7 +4,6 @@ const CountdownTimer = () => {
   const { hours, minutes, seconds } = useCountdown();
 
   const blocks = [
-    { label: "Horas", value: pad(hours) },
     { label: "Min", value: pad(minutes) },
     { label: "Seg", value: pad(seconds) },
   ];
@@ -21,7 +20,7 @@ const CountdownTimer = () => {
         </p>
       </div>
 
-      <div className="mt-4 grid grid-cols-3 gap-3" role="timer" aria-live="polite">
+      <div className="mt-4 grid grid-cols-2 gap-3" role="timer" aria-live="polite">
         {blocks.map((b) => (
           <div
             key={b.label}

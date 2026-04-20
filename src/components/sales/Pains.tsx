@@ -36,20 +36,20 @@ const Pains = () => {
           </p>
         </Reveal>
 
-        <div className="mt-16 grid gap-6 md:grid-cols-3">
+        <div className="mt-16 grid gap-8 md:grid-cols-3">
           {pains.map(({ icon: Icon, title, text }, index) => (
             <Reveal key={title} delay={index * 100}>
               <div
-                className="group relative h-full overflow-hidden rounded-2xl border border-border bg-background p-8 shadow-card transition-all hover:-translate-y-1 hover:border-cta/40"
+                className="group glass-card relative h-full overflow-hidden rounded-[2rem] p-8 transition-all duration-500 hover:-translate-y-2 hover:shadow-torque/20"
               >
-                <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-primary text-cta">
-                  <Icon className="h-7 w-7" />
+                <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-primary text-cta shadow-torque">
+                  <Icon className="h-8 w-8" />
                 </div>
-                <h3 className="font-display text-2xl font-bold text-primary">{title}</h3>
-                <p className="mt-3 text-base leading-relaxed text-muted-foreground">{text}</p>
+                <h3 className="font-display text-2xl font-bold text-primary leading-tight">{title}</h3>
+                <p className="mt-4 text-base leading-relaxed text-muted-foreground">{text}</p>
                 <div
                   aria-hidden
-                  className="absolute -bottom-1 left-0 h-1 w-0 bg-cta transition-all duration-500 group-hover:w-full"
+                  className="absolute bottom-0 left-0 h-1.5 w-0 bg-cta transition-all duration-700 group-hover:w-full"
                 />
               </div>
             </Reveal>

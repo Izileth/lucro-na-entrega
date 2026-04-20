@@ -9,10 +9,12 @@ import Faq from "@/components/sales/Faq";
 import FinalCta from "@/components/sales/FinalCta";
 import Footer from "@/components/sales/Footer";
 import StickyOfferBar from "@/components/sales/StickyOfferBar";
+import RecentSales from "@/components/sales/RecentSales";
 
 const Index = () => {
   return (
     <main className="min-h-screen bg-background">
+      <RecentSales />
       <StickyOfferBar />
       <Navbar />
       <Hero />

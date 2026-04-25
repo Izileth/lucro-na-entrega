@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Zap, TrendingUp, Navigation, DollarSign, MapPin, CheckCircle2 } from "lucide-react";
 
+
 const Hero = () => {
   return (
     <header id="top" className="relative overflow-hidden bg-background pt-4 md:pt-8">
@@ -12,21 +13,21 @@ const Hero = () => {
         <div className="animate-fade-up text-center md:text-left">
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-cta/20 bg-cta/5 px-4 py-1.5 text-[10px] md:text-xs font-bold uppercase tracking-widest text-cta">
             <Zap className="h-3 md:h-3.5 w-3 md:w-3.5" />
-            Método atualizado 2024 • Vagas limitadas
+            Método atualizado 2026 • Vagas limitadas
           </div>
 
           <h1 className="font-display text-4xl font-bold leading-[0.9] tracking-tighter text-primary sm:text-6xl md:text-8xl lg:text-9xl">
-            Pare de <span className="text-cta">pagar para</span> trabalhar.
+            Cansado de <span className="text-cta">gastar horas</span> no transido e não ter lucro?
           </h1>
 
           <p className="mt-6 mx-auto md:mx-0 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg md:text-2xl">
-            Você não precisa de mais horas na rua. Você precisa de <span className="text-primary font-bold">estratégia de pista</span> para dobrar seu lucro líquido e voltar cedo para casa.
+            Você não precisay de mais horas na rua. Você precisa de uma <span className="text-primary font-bold">estratégia</span> criada para aumentar seus ganhos e reduzir as suas despesas.
           </p>
 
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
             <Button variant="torque" size="xl" className="w-full sm:w-auto" asChild>
               <a href="#planos">
-                Quero o Método FastMotors
+                Adiquirir o método 
                 <ArrowRight className="ml-1 h-5 w-5" />
               </a>
             </Button>
@@ -53,9 +54,9 @@ const Hero = () => {
 
           {/* Trust Bar / Compatibility */}
           <div className="mt-12 border-t border-border pt-8 hidden md:block">
-            <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-4">Compatível com todos os apps:</p>
+            <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-4">Desenvolvido por quem vive na pista</p>
             <div className="flex gap-6 opacity-40 grayscale transition-all hover:grayscale-0 hover:opacity-100">
-               <span className="font-display font-black text-xl italic">iFood</span>
+               <span className="font-display font-black text-xl italic"></span>
                <span className="font-display font-black text-xl italic">UberEats</span>
                <span className="font-display font-black text-xl italic">Rappi</span>
                <span className="font-display font-black text-xl italic">Loggi</span>

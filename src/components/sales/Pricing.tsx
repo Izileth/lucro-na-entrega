@@ -86,7 +86,7 @@ const Pricing = () => {
                 {/* Preço */}
                 <div className="mt-10 flex flex-col items-center">
                   <span className="text-lg text-primary-foreground/40 line-through font-medium">
-                    Total: R$ 208,00
+                    Total: R$ 97,00
                   </span>
 
                   <div className="mt-2 flex items-baseline gap-2">

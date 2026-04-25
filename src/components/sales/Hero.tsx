@@ -4,39 +4,39 @@ import { ArrowRight, Zap, TrendingUp, Navigation, DollarSign, MapPin, CheckCircl
 
 const Hero = () => {
   return (
-    <header id="top" className="relative overflow-hidden bg-background pt-4 md:pt-8">
+    <header id="top" className="relative overflow-hidden bg-background pt-2 md:pt-8">
       {/* Decorative Blur Elements */}
-      <div className="absolute -left-24 top-0 h-64 w-64 md:h-96 md:w-96 rounded-full bg-cta/10 blur-[80px] md:blur-[120px]" />
-      <div className="absolute -right-24 top-48 h-64 w-64 md:h-96 md:w-96 rounded-full bg-primary/5 blur-[80px] md:blur-[120px]" />
+      <div className="absolute -left-24 top-0 h-48 w-48 md:h-96 md:w-96 rounded-full bg-cta/10 blur-[60px] md:blur-[120px]" />
+      <div className="absolute -right-24 top-48 h-48 w-48 md:h-96 md:w-96 rounded-full bg-primary/5 blur-[60px] md:blur-[120px]" />
       
-      <div className="container relative z-10 mx-auto grid items-center gap-10 px-4 pb-12 pt-8 sm:px-6 md:grid-cols-[1.1fr_1fr] md:pb-20 md:pt-20">
+      <div className="container relative z-10 mx-auto grid items-center gap-8 px-5 pb-10 pt-6 sm:px-6 md:grid-cols-[1.1fr_1fr] md:pb-20 md:pt-20">
         <div className="animate-fade-up text-center md:text-left">
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-cta/20 bg-cta/5 px-4 py-1.5 text-[10px] md:text-xs font-bold uppercase tracking-widest text-cta">
+          <div className="mb-4 md:mb-6 inline-flex items-center gap-2 rounded-full border border-cta/20 bg-cta/5 px-3 py-1 md:px-4 md:py-1.5 text-[9px] md:text-xs font-bold uppercase tracking-widest text-cta">
             <Zap className="h-3 md:h-3.5 w-3 md:w-3.5" />
             Método atualizado 2026 • Vagas limitadas
           </div>
 
-          <h1 className="font-display text-4xl font-bold leading-[0.9] tracking-tighter text-primary sm:text-6xl md:text-8xl lg:text-9xl">
-            Cansado de <span className="text-cta">gastar horas</span> no transido e não ter lucro?
+          <h1 className="font-display text-3xl font-bold leading-[0.95] tracking-tighter text-primary sm:text-6xl md:text-8xl lg:text-9xl">
+            Cansado de <span className="text-cta">gastar horas</span> no trânsito e não ter lucro?
           </h1>
 
-          <p className="mt-6 mx-auto md:mx-0 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg md:text-2xl">
-            Você não precisay de mais horas na rua. Você precisa de uma <span className="text-primary font-bold">estratégia</span> criada para aumentar seus ganhos e reduzir as suas despesas.
+          <p className="mt-4 md:mt-6 mx-auto md:mx-0 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-lg md:text-2xl">
+            Você não precisa de mais horas na rua. Você precisa de uma <span className="text-primary font-bold">estratégia</span> criada para aumentar seus ganhos e reduzir as suas despesas.
           </p>
 
-          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
-            <Button variant="torque" size="xl" className="w-full sm:w-auto" asChild>
+          <div className="mt-6 md:mt-8 flex flex-col sm:flex-row items-center justify-center md:justify-start gap-3 md:gap-4">
+            <Button variant="torque" size="lg" className="w-full sm:w-auto text-sm md:text-base" asChild>
               <a href="#planos">
-                Adiquirir o método 
-                <ArrowRight className="ml-1 h-5 w-5" />
+                Adquirir o método 
+                <ArrowRight className="ml-1 h-4 w-4 md:h-5 md:w-5" />
               </a>
             </Button>
-            <Button variant="ghost" size="xl" className="w-full sm:w-auto" asChild>
+            <Button variant="ghost" size="lg" className="w-full sm:w-auto text-sm md:text-base" asChild>
               <a href="#metodo">Ver os 4 passos</a>
             </Button>
           </div>
 
-          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4 sm:gap-6 text-xs sm:text-sm text-muted-foreground">
+          <div className="mt-8 md:mt-10 flex flex-col sm:flex-row items-center justify-center md:justify-start gap-3 sm:gap-6 text-[10px] sm:text-sm text-muted-foreground">
             <div className="flex -space-x-2">
               {["JS", "RA", "ML", "VC"].map((i) => (
                 <div

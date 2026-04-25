@@ -1,5 +1,12 @@
 import { Star } from "lucide-react";
 import { Reveal } from "@/components/ui/reveal";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 const items = [
   {
@@ -24,43 +31,59 @@ const items = [
 
 const Testimonials = () => {
   return (
-    <section className="bg-secondary/40 py-24 md:py-32">
+    <section className="bg-secondary/40 py-16 md:py-32 overflow-hidden">
       <div className="container mx-auto px-6">
         <Reveal className="mx-auto max-w-3xl text-center">
-          <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-cta">
+          <p className="mb-3 text-[10px] md:text-sm font-semibold uppercase tracking-widest text-cta">
             Histórias de pista
           </p>
-          <h2 className="font-display text-4xl font-bold tracking-tighter text-primary md:text-5xl">
+          <h2 className="font-display text-3xl md:text-5xl font-bold tracking-tighter text-primary">
             Quem aplica, <span className="text-cta">lucra mais</span>.
           </h2>
         </Reveal>
 
-        <div className="mt-16 grid gap-8 md:grid-cols-3">
-          {items.map((t, index) => (
-            <Reveal key={t.name} delay={index * 100}>
-              <article
-                className="glass-card flex h-full flex-col rounded-[2.5rem] p-10 transition-all duration-500 hover:-translate-y-2"
-              >
-                <div className="flex gap-1.5 text-cta">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} className="h-5 w-5 fill-current" />
-                  ))}
-                </div>
-                <p className="mt-8 flex-1 text-xl leading-relaxed text-primary italic font-medium">
-                  "{t.text}"
-                </p>
-                <div className="mt-10 flex items-center gap-5 border-t border-white/5 pt-8">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary text-base font-black text-cta shadow-torque">
-                    {t.initials}
-                  </div>
-                  <div>
-                    <p className="font-display text-lg font-bold text-primary">{t.name}</p>
-                    <p className="text-sm font-semibold text-muted-foreground">{t.role}</p>
-                  </div>
-                </div>
-              </article>
-            </Reveal>
-          ))}
+        <div className="mt-12 md:mt-16">
+          <Carousel
+            opts={{
+              align: "center",
+              loop: true,
+            }}
+            className="w-full max-w-5xl mx-auto"
+          >
+            <CarouselContent className="-ml-4">
+              {items.map((t, index) => (
+                <CarouselItem key={t.name} className="pl-4 md:basis-full lg:basis-full">
+                  <Reveal delay={index * 100} className="h-full">
+                    <article
+                      className="glass-card flex h-full flex-col rounded-[2.5rem] p-6 md:p-12 transition-all duration-500"
+                    >
+                      <div className="flex justify-center gap-1.5 text-cta mb-6 md:mb-8">
+                        {Array.from({ length: 5 }).map((_, i) => (
+                          <Star key={i} className="h-4 w-4 md:h-5 md:w-5 fill-current" />
+                        ))}
+                      </div>
+                      <p className="flex-1 text-base md:text-2xl leading-relaxed text-primary italic font-medium text-center">
+                        "{t.text}"
+                      </p>
+                      <div className="mt-8 md:mt-10 flex flex-col items-center gap-3 md:gap-4 border-t border-white/5 pt-6 md:pt-8">
+                        <div className="flex h-12 w-12 md:h-16 md:w-16 items-center justify-center rounded-2xl bg-primary text-lg md:text-xl font-black text-cta shadow-torque">
+                          {t.initials}
+                        </div>
+                        <div className="text-center">
+                          <p className="font-display text-lg md:text-xl font-bold text-primary">{t.name}</p>
+                          <p className="text-[10px] md:text-sm font-semibold text-muted-foreground">{t.role}</p>
+                        </div>
+                      </div>
+                    </article>
+                  </Reveal>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <div className="flex justify-center gap-4 mt-6 md:mt-8">
+              <CarouselPrevious className="static translate-y-0" />
+              <CarouselNext className="static translate-y-0" />
+            </div>
+          </Carousel>
         </div>
       </div>
     </section>

@@ -23,3 +23,7 @@ dist-ssr
 *.sln
 *.sw?
 
+# Local environment variables and database config/migrations (not committed)
+.env
+docs/
+supabase/

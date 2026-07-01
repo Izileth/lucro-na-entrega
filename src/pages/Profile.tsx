@@ -113,114 +113,158 @@ export default function Profile() {
 
   if (loading) {
     return (
-      <div>
-        <p>Carregando dados do perfil...</p>
+      <div className="min-h-screen bg-background text-foreground flex items-center justify-center">
+        <p className="text-sm text-muted-foreground">Carregando dados do perfil...</p>
       </div>
     );
   }
 
   return (
-    <div>
-      <div>
-        <Link to="/">← Voltar para o início</Link>
-      </div>
-
-      {error && !profileData && (
-        <div>
-          <h3>Acesso Restrito ou Perfil Não Encontrado</h3>
-          <p>{error}</p>
-          <Link to="/login">Ir para Login</Link>
+    <div className="min-h-screen bg-background text-foreground flex items-center justify-center p-6">
+      <div className="max-w-md w-full border border-border bg-card rounded-lg p-8 shadow-sm space-y-6">
+        <div className="flex justify-between items-center pb-4 border-b border-border">
+          <h2 className="text-xl font-bold tracking-tight">Perfil do Usuário</h2>
+          <Link to="/" className="text-xs text-muted-foreground hover:text-foreground">
+            ← Início
+          </Link>
         </div>
-      )}
 
-      {profileData && (
-        <div>
-          <h2>Perfil do Usuário</h2>
-
-          {saveSuccess && (
-            <div style={{ color: "green" }}>
-              Perfil atualizado com sucesso!
+        {error && !profileData && (
+          <div className="p-4 rounded bg-destructive/10 border border-destructive/20 text-destructive text-sm font-medium space-y-2">
+            <p className="font-semibold">Acesso Restrito ou Perfil Não Encontrado</p>
+            <p className="text-xs text-muted-foreground">{error}</p>
+            <div className="pt-2">
+              <Link to="/login" className="text-xs text-primary hover:underline font-semibold">
+                Ir para Login
+              </Link>
             </div>
-          )}
-          {error && (
-            <div style={{ color: "red" }}>
-              {error}
-            </div>
-          )}
+          </div>
+        )}
 
-          {isEditing ? (
-            <form onSubmit={handleSave}>
-              <div>
-                <label htmlFor="editName">Nome de Exibição</label>
-                <input
-                  id="editName"
-                  type="text"
-                  required
-                  value={editName}
-                  onChange={(e) => setEditName(e.target.value)}
-                />
+        {profileData && (
+          <div className="space-y-6">
+            {saveSuccess && (
+              <div className="p-3 rounded bg-green-500/10 border border-green-500/20 text-green-600 text-sm font-medium">
+                Perfil atualizado com sucesso!
               </div>
-
-              <div>
-                <label htmlFor="editSlug">Link do Perfil (Slug)</label>
-                <input
-                  id="editSlug"
-                  type="text"
-                  required
-                  value={editSlug}
-                  onChange={(e) => setEditSlug(e.target.value)}
-                />
+            )}
+            {error && (
+              <div className="p-3 rounded bg-destructive/10 border border-destructive/20 text-destructive text-sm font-medium">
+                {error}
               </div>
+            )}
 
-              <div>
-                <button type="submit" disabled={saveLoading}>
-                  {saveLoading ? "Salvando..." : "Salvar Alterações"}
-                </button>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setIsEditing(false);
-                    setEditName(profileData.name || "");
-                    setEditSlug(profileData.slug || "");
-                    setError(null);
-                  }}
-                >
-                  Cancelar
-                </button>
-              </div>
-            </form>
-          ) : (
-            <div>
-              <h3>
-                {profileData.name || "Sem Nome"} 
-                {profileData.is_admin && " [Admin]"}
-              </h3>
-              <p>Slug: @{profileData.slug}</p>
-              <p>
-                Membro desde:{" "}
-                {new Date(profileData.created_at).toLocaleDateString("pt-BR")}
-              </p>
-              <p>
-                Nível de Acesso:{" "}
-                {profileData.is_admin ? "Administrador" : "Usuário Comum"}
-              </p>
-
-              {canEdit && (
-                <button onClick={() => setIsEditing(true)}>
-                  Editar Perfil
-                </button>
-              )}
-
-              {isOwner && (
-                <div>
-                  <p>Conectado como: {user.email}</p>
-                  <button onClick={handleSignOut}>Sair da Conta</button>
+            {isEditing ? (
+              <form onSubmit={handleSave} className="space-y-4">
+                <div className="space-y-1">
+                  <label htmlFor="editName" className="text-sm font-medium text-muted-foreground block">
+                    Nome de Exibição
+                  </label>
+                  <input
+                    id="editName"
+                    type="text"
+                    required
+                    value={editName}
+                    onChange={(e) => setEditName(e.target.value)}
+                    className="w-full px-3 py-2 border border-input rounded-md bg-background focus:outline-none focus:ring-1 focus:ring-ring text-sm"
+                  />
                 </div>
-              )}
-            </div>
-          )}
-        </div>
-      )}
+
+                <div className="space-y-1">
+                  <label htmlFor="editSlug" className="text-sm font-medium text-muted-foreground block">
+                    Link do Perfil (Slug)
+                  </label>
+                  <input
+                    id="editSlug"
+                    type="text"
+                    required
+                    value={editSlug}
+                    onChange={(e) => setEditSlug(e.target.value)}
+                    className="w-full px-3 py-2 border border-input rounded-md bg-background focus:outline-none focus:ring-1 focus:ring-ring text-sm"
+                  />
+                </div>
+
+                <div className="flex gap-2 pt-2">
+                  <button
+                    type="submit"
+                    disabled={saveLoading}
+                    className="flex-1 py-2 bg-primary text-primary-foreground rounded-md text-sm font-medium hover:bg-primary/90 transition-colors disabled:opacity-50"
+                  >
+                    {saveLoading ? "Salvando..." : "Salvar"}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setIsEditing(false);
+                      setEditName(profileData.name || "");
+                      setEditSlug(profileData.slug || "");
+                      setError(null);
+                    }}
+                    className="flex-1 py-2 border border-input bg-background rounded-md text-sm font-medium hover:bg-accent hover:text-accent-foreground transition-colors"
+                  >
+                    Cancelar
+                  </button>
+                </div>
+              </form>
+            ) : (
+              <div className="space-y-4">
+                <div className="space-y-1">
+                  <h3 className="text-lg font-bold">
+                    {profileData.name || "Sem Nome"}
+                    {profileData.is_admin && (
+                      <span className="ml-2 text-xs font-semibold px-2 py-0.5 rounded bg-primary/10 text-primary border border-primary/20">
+                        Admin
+                      </span>
+                    )}
+                  </h3>
+                  <p className="text-sm text-muted-foreground">@{profileData.slug}</p>
+                </div>
+
+                <div className="border-t border-b border-border py-4 space-y-2 text-sm">
+                  <p className="text-muted-foreground">
+                    Membro desde:{" "}
+                    <strong className="text-foreground">
+                      {new Date(profileData.created_at).toLocaleDateString("pt-BR")}
+                    </strong>
+                  </p>
+                  <p className="text-muted-foreground">
+                    Nível de Acesso:{" "}
+                    <strong className="text-foreground">
+                      {profileData.is_admin ? "Administrador" : "Usuário Comum"}
+                    </strong>
+                  </p>
+                </div>
+
+                <div className="flex gap-2 pt-2">
+                  {canEdit && (
+                    <button
+                      onClick={() => setIsEditing(true)}
+                      className="flex-1 py-2 border border-input bg-background rounded-md text-sm font-medium hover:bg-accent hover:text-accent-foreground transition-colors"
+                    >
+                      Editar Perfil
+                    </button>
+                  )}
+
+                  {isOwner && (
+                    <button
+                      onClick={handleSignOut}
+                      className="flex-1 py-2 border border-transparent bg-destructive/10 hover:bg-destructive/20 text-destructive rounded-md text-sm font-medium transition-colors"
+                    >
+                      Sair da Conta
+                    </button>
+                  )}
+                </div>
+
+                {isOwner && (
+                  <p className="text-center text-xs text-muted-foreground pt-4">
+                    Conectado como <strong className="text-foreground">{user.email}</strong>
+                  </p>
+                )}
+              </div>
+            )}
+          </div>
+        )}
+      </div>
     </div>
   );
 }

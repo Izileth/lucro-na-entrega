@@ -45,88 +45,120 @@ export default function Register() {
   };
 
   return (
-    <div>
-      <h2>Criar Conta</h2>
-      <p>Crie sua conta para começar</p>
-
-      {success ? (
-        <div>
-          <h3>Cadastro Realizado!</h3>
-          <p>
-            Sua conta foi criada com sucesso! Se necessário, verifique sua caixa de entrada para confirmar seu e-mail antes de fazer login.
-          </p>
-          <Link to="/login">Ir para Login</Link>
+    <div className="min-h-screen bg-background text-foreground flex items-center justify-center p-6">
+      <div className="max-w-md w-full border border-border bg-card rounded-lg p-8 shadow-sm space-y-6">
+        <div className="text-center space-y-2">
+          <h2 className="text-2xl font-bold tracking-tight">Criar Conta</h2>
+          <p className="text-sm text-muted-foreground">Cadastre-se gratuitamente abaixo</p>
         </div>
-      ) : (
-        <>
-          {error && (
-            <div style={{ color: "red" }}>
-              {error}
+
+        {success ? (
+          <div className="text-center space-y-4 py-4">
+            <h3 className="text-lg font-semibold text-green-600">Cadastro Realizado!</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Sua conta foi criada com sucesso! Se necessário, verifique sua caixa de entrada para confirmar seu e-mail antes de fazer login.
+            </p>
+            <div className="pt-2">
+              <Link
+                to="/login"
+                className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-6 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors"
+              >
+                Ir para Login
+              </Link>
             </div>
-          )}
-
-          <form onSubmit={handleSubmit}>
-            <div>
-              <label htmlFor="name">Nome Completo</label>
-              <input
-                id="name"
-                type="text"
-                required
-                placeholder="Seu nome"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
-            </div>
-
-            <div>
-              <label htmlFor="email">E-mail</label>
-              <input
-                id="email"
-                type="email"
-                required
-                placeholder="seuemail@exemplo.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-
-            <div>
-              <label htmlFor="password">Senha</label>
-              <input
-                id="password"
-                type="password"
-                required
-                placeholder="Mínimo 6 caracteres"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </div>
-
-            <div>
-              <label htmlFor="confirmPassword">Confirmar Senha</label>
-              <input
-                id="confirmPassword"
-                type="password"
-                required
-                placeholder="Confirme sua senha"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-              />
-            </div>
-
-            <button type="submit" disabled={loading}>
-              {loading ? "Carregando..." : "Cadastrar"}
-            </button>
-          </form>
-
-          <div>
-            Já possui uma conta? <Link to="/login">Faça login</Link>
           </div>
-        </>
-      )}
+        ) : (
+          <>
+            {error && (
+              <div className="p-3 rounded bg-destructive/10 border border-destructive/20 text-destructive text-sm font-medium">
+                {error}
+              </div>
+            )}
 
-      <div>
-        <Link to="/">Voltar para a página inicial</Link>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="space-y-1">
+                <label htmlFor="name" className="text-sm font-medium text-muted-foreground block">
+                  Nome Completo
+                </label>
+                <input
+                  id="name"
+                  type="text"
+                  required
+                  placeholder="Seu nome"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  className="w-full px-3 py-2 border border-input rounded-md bg-background focus:outline-none focus:ring-1 focus:ring-ring text-sm"
+                />
+              </div>
+
+              <div className="space-y-1">
+                <label htmlFor="email" className="text-sm font-medium text-muted-foreground block">
+                  E-mail
+                </label>
+                <input
+                  id="email"
+                  type="email"
+                  required
+                  placeholder="seuemail@exemplo.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full px-3 py-2 border border-input rounded-md bg-background focus:outline-none focus:ring-1 focus:ring-ring text-sm"
+                />
+              </div>
+
+              <div className="space-y-1">
+                <label htmlFor="password" className="text-sm font-medium text-muted-foreground block">
+                  Senha (mínimo 6 caracteres)
+                </label>
+                <input
+                  id="password"
+                  type="password"
+                  required
+                  placeholder="••••••••"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="w-full px-3 py-2 border border-input rounded-md bg-background focus:outline-none focus:ring-1 focus:ring-ring text-sm"
+                />
+              </div>
+
+              <div className="space-y-1">
+                <label htmlFor="confirmPassword" className="text-sm font-medium text-muted-foreground block">
+                  Confirmar Senha
+                </label>
+                <input
+                  id="confirmPassword"
+                  type="password"
+                  required
+                  placeholder="••••••••"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  className="w-full px-3 py-2 border border-input rounded-md bg-background focus:outline-none focus:ring-1 focus:ring-ring text-sm"
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full py-2 bg-primary text-primary-foreground rounded-md text-sm font-medium hover:bg-primary/90 transition-colors disabled:opacity-50"
+              >
+                {loading ? "Carregando..." : "Cadastrar"}
+              </button>
+            </form>
+
+            <div className="text-center text-xs text-muted-foreground">
+              Já possui uma conta?{" "}
+              <Link to="/login" className="text-primary hover:underline font-semibold">
+                Faça login
+              </Link>
+            </div>
+          </>
+        )}
+
+        <div className="text-center pt-2">
+          <Link to="/" className="text-xs text-muted-foreground hover:text-foreground">
+            ← Voltar para a página inicial
+          </Link>
+        </div>
       </div>
     </div>
   );

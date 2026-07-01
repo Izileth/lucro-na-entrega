@@ -1,1 +1,0 @@
-Crie a arquitetura em Hooks, Components, Contextos e Apis endpoints , preaparando pára a inserção dos arquivos

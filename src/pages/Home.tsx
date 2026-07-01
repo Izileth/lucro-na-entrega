@@ -18,9 +18,9 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col items-center justify-center p-6">
       <div className="max-w-xl w-full text-center space-y-6">
-        <h1 className="text-4xl font-bold tracking-tight">Fast Motors</h1>
+        <h1 className="text-4xl font-bold tracking-tight">Site Online</h1>
         <p className="text-muted-foreground text-base">
-          Landing page estruturada para captação de leads e conversão para o método Fast Motors.
+          Bem-vindo ao Site Online! Este é um projeto de exemplo que demonstra como criar uma aplicação web moderna com autenticação, gerenciamento de perfil e recuperação de senha. Explore as funcionalidades e veja como tudo funciona!
         </p>
         
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">

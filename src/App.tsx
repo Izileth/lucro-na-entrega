@@ -11,6 +11,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Profile from "./pages/Profile";
 import ResetPassword from "./pages/ResetPassword";
+import AdminDashboard from "./pages/AdminDashboard";
 
 // Create Query Client for React Query
 const queryClient = new QueryClient({
@@ -35,6 +36,7 @@ export default function App() {
                 <Route path="/create" element={<Register />} />
                 <Route path="/reset" element={<ResetPassword />} />
                 <Route path="/user/:slug" element={<Profile />} />
+                <Route path="/admin" element={<AdminDashboard />} />
                 {/* Fallback route */}
                 <Route path="*" element={<Navigate to="/" replace />} />
               </Routes>
@@ -45,4 +47,5 @@ export default function App() {
     </HelmetProvider>
   );
 }
+
 

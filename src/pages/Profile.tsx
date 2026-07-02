@@ -235,24 +235,35 @@ export default function Profile() {
                   </p>
                 </div>
 
-                <div className="flex gap-2 pt-2">
-                  {canEdit && (
-                    <button
-                      onClick={() => setIsEditing(true)}
-                      className="flex-1 py-2 border border-input bg-background rounded-md text-sm font-medium hover:bg-accent hover:text-accent-foreground transition-colors"
+                <div className="flex flex-col gap-2 pt-2">
+                  {isAdmin && (
+                    <Link
+                      to="/admin"
+                      className="w-full text-center py-2 bg-[#22c55e] text-white hover:bg-[#16a34a] rounded-md text-sm font-bold transition-colors shadow-sm"
                     >
-                      Editar Perfil
-                    </button>
+                      Painel Administrativo
+                    </Link>
                   )}
+                  
+                  <div className="flex gap-2 w-full">
+                    {canEdit && (
+                      <button
+                        onClick={() => setIsEditing(true)}
+                        className="flex-1 py-2 border border-input bg-background rounded-md text-sm font-medium hover:bg-accent hover:text-accent-foreground transition-colors"
+                      >
+                        Editar Perfil
+                      </button>
+                    )}
 
-                  {isOwner && (
-                    <button
-                      onClick={handleSignOut}
-                      className="flex-1 py-2 border border-transparent bg-destructive/10 hover:bg-destructive/20 text-destructive rounded-md text-sm font-medium transition-colors"
-                    >
-                      Sair da Conta
-                    </button>
-                  )}
+                    {isOwner && (
+                      <button
+                        onClick={handleSignOut}
+                        className="flex-1 py-2 border border-transparent bg-destructive/10 hover:bg-destructive/20 text-destructive rounded-md text-sm font-medium transition-colors"
+                      >
+                        Sair da Conta
+                      </button>
+                    )}
+                  </div>
                 </div>
 
                 {isOwner && (

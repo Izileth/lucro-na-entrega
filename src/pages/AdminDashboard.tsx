@@ -316,6 +316,123 @@ export default function AdminDashboard() {
   };
 
   // ----------------------------------------------------
+  // TEST / SIMULATION OPERATIONS
+  // ----------------------------------------------------
+  const handleGenerateMockLeads = async () => {
+    setActionLoading("generate-mock-leads");
+    const mockLeads = [
+      {
+        name: "João Silva",
+        email: "joao.silva@teste.com",
+        phone: "(11) 98765-4321",
+        source: "google",
+        metadata: { utm_source: "google", utm_medium: "cpc", utm_campaign: "black_friday" }
+      },
+      {
+        name: "Maria Oliveira",
+        email: "maria.oliveira@teste.com",
+        phone: "(21) 99888-7777",
+        source: "instagram",
+        metadata: { utm_source: "instagram", utm_medium: "stories", utm_campaign: "stories_influence" }
+      },
+      {
+        name: "Pedro Souza",
+        email: "pedro.souza@teste.com",
+        phone: "(31) 97777-6666",
+        source: "facebook",
+        metadata: { utm_source: "facebook", utm_medium: "feed", utm_campaign: "conversao_leads" }
+      },
+      {
+        name: "Ana Costa",
+        email: "ana.costa@teste.com",
+        phone: "(19) 96666-5555",
+        source: "email_marketing",
+        metadata: { utm_source: "email", utm_medium: "newsletter", utm_campaign: "fast_newsletter" }
+      },
+      {
+        name: "Carlos Santos",
+        email: "carlos.santos@teste.com",
+        phone: "(41) 95555-4444",
+        source: "direto",
+        metadata: { utm_source: "direct", utm_medium: "none", utm_campaign: "none" }
+      }
+    ];
+
+    try {
+      const { error: insertErr } = await supabase
+        .from("leads")
+        .insert(mockLeads.map(lead => ({
+          ...lead,
+          created_at: new Date(Date.now() - Math.random() * 6 * 24 * 60 * 60 * 1000).toISOString() // Random date in last 7 days
+        })));
+
+      if (insertErr) throw insertErr;
+      await fetchDashboardData();
+    } catch (err: any) {
+      alert("Erro ao gerar leads de teste: " + (err.message || err));
+    } finally {
+      setActionLoading(null);
+    }
+  };
+
+  const handleGenerateMockTraffic = async () => {
+    setActionLoading("generate-mock-traffic");
+    const mockEvents: any[] = [];
+    const eventNames = ["page_view", "cta_click", "page_view", "page_view"];
+    const paths = ["/", "/login", "/", "/create"];
+
+    // Generate 40 events spread over the last 7 days
+    for (let i = 0; i < 40; i++) {
+      const randomDayOffset = Math.random() * 6; // last 6 days
+      const date = new Date(Date.now() - randomDayOffset * 24 * 60 * 60 * 1000);
+      const isPageView = Math.random() > 0.3;
+      
+      mockEvents.push({
+        event_name: isPageView ? "page_view" : "cta_click",
+        page_path: isPageView ? paths[Math.floor(Math.random() * paths.length)] : "/",
+        session_id: "session_" + Math.floor(Math.random() * 1000),
+        metadata: {
+          utm_source: ["google", "instagram", "facebook", "email"][Math.floor(Math.random() * 4)],
+          browser: "Chrome",
+          screenResolution: "1920x1080"
+        },
+        created_at: date.toISOString()
+      });
+    }
+
+    try {
+      const { error: insertErr } = await supabase
+        .from("analytics_events")
+        .insert(mockEvents);
+
+      if (insertErr) throw insertErr;
+      await fetchDashboardData();
+    } catch (err: any) {
+      alert("Erro ao gerar tráfego de teste: " + (err.message || err));
+    } finally {
+      setActionLoading(null);
+    }
+  };
+
+  const handleClearMockData = async () => {
+    if (!window.confirm("ATENÇÃO: Isso excluirá TODOS os leads e eventos do banco de dados para testes. Continuar?")) return;
+    setActionLoading("clear-mock-data");
+    try {
+      const { error: leadsErr } = await supabase.from("leads").delete().neq("id", "00000000-0000-0000-0000-000000000000"); // deletes all
+      const { error: eventsErr } = await supabase.from("analytics_events").delete().neq("id", "00000000-0000-0000-0000-000000000000"); // deletes all
+      
+      if (leadsErr) throw leadsErr;
+      if (eventsErr) throw eventsErr;
+
+      await fetchDashboardData();
+    } catch (err: any) {
+      alert("Erro ao limpar dados de teste: " + (err.message || err));
+    } finally {
+      setActionLoading(null);
+    }
+  };
+
+  // ----------------------------------------------------
   // DATA PREPARATION FOR CHARTS
   // ----------------------------------------------------
   const getChartData = () => {
@@ -611,6 +728,46 @@ export default function AdminDashboard() {
         {/* Tab 1: OVERVIEW */}
         {activeTab === "overview" && (
           <div className="space-y-6 animate-fade-up">
+            
+            {/* Simulation and Test Panel */}
+            <div className="bg-[#18181b] border border-cta/30 rounded-2xl p-6 space-y-4 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-cta/5 rounded-full blur-2xl pointer-events-none"></div>
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <div className="space-y-1">
+                  <div className="flex items-center gap-2">
+                    <Sparkles className="h-4 w-4 text-cta animate-pulse" />
+                    <h3 className="text-sm font-bold text-white">Console de Testes & Simulação</h3>
+                  </div>
+                  <p className="text-xs text-muted-foreground">
+                    Gere leads fictícios e tráfego simulado para visualizar o comportamento dos gráficos e tabelas do painel.
+                  </p>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  <button
+                    onClick={handleGenerateMockLeads}
+                    disabled={actionLoading === "generate-mock-leads"}
+                    className="px-3.5 py-2 bg-cta/15 text-cta border border-cta/25 hover:bg-cta/25 rounded-xl text-xs font-bold transition-all disabled:opacity-50"
+                  >
+                    {actionLoading === "generate-mock-leads" ? "Gerando..." : "Gerar 5 Leads"}
+                  </button>
+                  <button
+                    onClick={handleGenerateMockTraffic}
+                    disabled={actionLoading === "generate-mock-traffic"}
+                    className="px-3.5 py-2 bg-[#6366f1]/15 text-[#818cf8] border border-[#6366f1]/25 hover:bg-[#6366f1]/25 rounded-xl text-xs font-bold transition-all disabled:opacity-50"
+                  >
+                    {actionLoading === "generate-mock-traffic" ? "Gerando..." : "Simular Tráfego"}
+                  </button>
+                  <button
+                    onClick={handleClearMockData}
+                    disabled={actionLoading === "clear-mock-data"}
+                    className="px-3.5 py-2 bg-destructive/15 text-destructive border border-destructive/25 hover:bg-destructive/25 rounded-xl text-xs font-bold transition-all disabled:opacity-50"
+                  >
+                    {actionLoading === "clear-mock-data" ? "Limpando..." : "Limpar Dados"}
+                  </button>
+                </div>
+              </div>
+            </div>
+
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               
               {/* Analytics Graph */}

@@ -2,7 +2,42 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 import { supabase } from "../api/client";
-import { ShieldCheck, Lock, Sparkles, LogOut, ArrowLeft } from "lucide-react";
+
+// Custom Sleek SVGs for Admin dashboard
+const ShieldCheckIcon = () => (
+    <svg className="h-6 w-6 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+        <polyline points="9 11 11 13 15 9" />
+    </svg>
+);
+
+const LockIcon = () => (
+    <svg className="h-10 w-10 text-red-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+        <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+    </svg>
+);
+
+const SparklesIcon = () => (
+    <svg className="h-4 w-4 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m11.314 11.314l.707.707" />
+    </svg>
+);
+
+const ArrowLeftIcon = () => (
+    <svg className="h-3.5 w-3.5 align-middle mr-1 inline-block" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
+        <line x1="19" y1="12" x2="5" y2="12" />
+        <polyline points="12 19 5 12 12 5" />
+    </svg>
+);
+
+const LogOutIcon = () => (
+    <svg className="h-3.5 w-3.5 align-middle mr-1 inline-block" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+        <polyline points="16 17 21 12 16 7" />
+        <line x1="21" y1="12" x2="9" y2="12" />
+    </svg>
+);
 
 export default function AdminDashboard() {
   const navigate = useNavigate();
@@ -129,31 +164,31 @@ export default function AdminDashboard() {
 
   if (authLoading) {
     return (
-      <div className="min-h-screen bg-background text-foreground flex items-center justify-center text-sm text-muted-foreground">
-        Autenticando sessão...
+      <div className="min-h-screen bg-white text-black flex items-center justify-center" style={{ fontFamily: "'Inter', sans-serif" }}>
+        <p className="text-xs font-bold uppercase tracking-wider text-neutral-400 animate-pulse">Autenticando sessão...</p>
       </div>
     );
   }
 
-  // Unauthorized
+  // Unauthorized View
   if (!isAuthorized) {
     return (
-      <div className="min-h-screen bg-background text-foreground flex items-center justify-center p-6">
-        <div className="max-w-md w-full border border-destructive/20 bg-card text-card-foreground rounded-xl p-8 text-center space-y-6 shadow-sm">
-          <div className="h-12 w-12 rounded-full bg-destructive/10 text-destructive flex items-center justify-center mx-auto">
-            <Lock className="h-5 w-5" />
+      <div className="min-h-screen bg-white text-black flex items-center justify-center p-5 sm:p-6" style={{ fontFamily: "'Inter', sans-serif" }}>
+        <div className="max-w-md w-full border border-red-200 bg-red-50 p-6 sm:p-8 text-center space-y-6">
+          <div className="h-14 w-14 border border-red-300 text-red-600 flex items-center justify-center mx-auto rounded-none">
+            <LockIcon />
           </div>
           <div className="space-y-2">
-            <h1 className="text-xl font-bold">Acesso Restrito</h1>
-            <p className="text-sm text-muted-foreground">
-              Você não possui permissões administrativas ou não está autenticado como administrador.
+            <h1 className="text-lg font-bold uppercase tracking-wider text-red-600">Acesso Restrito</h1>
+            <p className="text-xs leading-relaxed text-red-700">
+              Você não possui permissões administrativas ou não está autenticado como administrador do portal.
             </p>
           </div>
           <div className="flex gap-2">
-            <Link to="/login" className="flex-1 py-2 bg-primary text-primary-foreground hover:bg-primary/90 text-sm font-semibold rounded-lg text-center transition-colors">
+            <Link to="/login" className="flex-1 bg-red-600 hover:bg-red-700 text-white text-xs font-bold tracking-wider py-3 text-center uppercase transition-colors">
               Fazer Login
             </Link>
-            <Link to="/" className="flex-1 py-2 border border-input bg-background hover:bg-accent hover:text-accent-foreground text-sm font-semibold rounded-lg text-center transition-colors">
+            <Link to="/" className="flex-1 border border-red-300 hover:bg-red-100 text-red-700 text-xs font-bold tracking-wider py-3 text-center uppercase transition-colors">
               Voltar ao Início
             </Link>
           </div>
@@ -164,65 +199,65 @@ export default function AdminDashboard() {
 
   // Authorized Admin View
   return (
-    <div className="min-h-screen bg-background text-foreground flex items-center justify-center p-6">
-      <div className="max-w-md w-full border border-border bg-card text-card-foreground rounded-2xl p-8 space-y-6 shadow-sm">
+    <div className="min-h-screen bg-white text-black flex items-center justify-center p-5 sm:p-6" style={{ fontFamily: "'Inter', sans-serif" }}>
+      <div className="max-w-md w-full border border-neutral-100 bg-neutral-50 p-6 sm:p-8 space-y-6">
         
         {/* Title */}
-        <div className="flex items-center gap-3 pb-4 border-b border-border">
-          <div className="h-10 w-10 rounded-lg bg-cta/15 text-cta flex items-center justify-center">
-            <ShieldCheck className="h-6 w-6" />
+        <div className="flex items-center gap-3 pb-4 border-b border-neutral-200">
+          <div className="h-10 w-10 border border-black flex items-center justify-center">
+            <ShieldCheckIcon />
           </div>
           <div>
-            <h1 className="text-lg font-bold">Administrador Autorizado</h1>
-            <p className="text-xs text-muted-foreground">Olá, {profile?.name || user?.email}</p>
+            <h1 className="text-sm font-bold uppercase tracking-wider text-black">Painel Administrador</h1>
+            <p className="text-[10px] text-neutral-400">Olá, {profile?.name || user?.email}</p>
           </div>
         </div>
 
         {/* Status Card */}
-        <div className="p-4 rounded-xl bg-cta/10 border border-cta/20 text-cta text-xs font-semibold leading-relaxed">
-          Autenticação realizada com sucesso. Você possui acesso administrativo total ao banco de dados e APIs do sistema.
+        <div className="p-4 border border-neutral-200 bg-white text-neutral-500 text-xs leading-relaxed">
+          Autenticação realizada com sucesso. Você possui acesso administrativo total ao banco de dados e simuladores do sistema.
         </div>
 
         {/* Simple Database Counts */}
         <div className="space-y-3">
-          <h2 className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Estatísticas do Banco</h2>
+          <h2 className="text-[10px] font-bold uppercase tracking-wider text-neutral-400">Estatísticas do Banco</h2>
           <div className="grid grid-cols-2 gap-3 text-xs">
-            <div className="p-3 bg-background border border-border rounded-lg">
-              <span className="text-muted-foreground block">Leads</span>
-              <strong className="text-base text-foreground">{loadingData ? "..." : counts.leads}</strong>
+            <div className="p-3 bg-white border border-neutral-200 text-center">
+              <span className="text-neutral-400 text-[10px] uppercase font-bold tracking-wider block">Leads</span>
+              <strong className="text-lg font-bold text-black">{loadingData ? "..." : counts.leads}</strong>
             </div>
-            <div className="p-3 bg-background border border-border rounded-lg">
-              <span className="text-muted-foreground block">Eventos</span>
-              <strong className="text-base text-foreground">{loadingData ? "..." : counts.events}</strong>
+            <div className="p-3 bg-white border border-neutral-200 text-center">
+              <span className="text-neutral-400 text-[10px] uppercase font-bold tracking-wider block">Eventos</span>
+              <strong className="text-lg font-bold text-black">{loadingData ? "..." : counts.events}</strong>
             </div>
           </div>
         </div>
 
         {/* Test Console Actions */}
         <div className="space-y-3 pt-2">
-          <div className="flex items-center gap-1.5">
-            <Sparkles className="h-4 w-4 text-cta" />
-            <h2 className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Simulação & Testes</h2>
+          <div className="flex items-center gap-1.5 pb-1">
+            <SparklesIcon />
+            <h2 className="text-[10px] font-bold uppercase tracking-wider text-neutral-400">Simulação & Testes</h2>
           </div>
           <div className="flex flex-col gap-2">
             <button
               onClick={handleGenerateMockLeads}
               disabled={actionLoading !== null}
-              className="py-2.5 bg-cta text-cta-foreground hover:bg-cta/90 disabled:opacity-50 text-xs font-bold rounded-lg transition-colors"
+              className="w-full bg-black py-3 text-xs font-bold tracking-wider text-white hover:bg-neutral-800 transition-colors uppercase disabled:opacity-50"
             >
-              {actionLoading === "generate-mock-leads" ? "Gerando..." : "Gerar Leads Fictícios (Teste)"}
+              {actionLoading === "generate-mock-leads" ? "Gerando..." : "Gerar Leads de Teste"}
             </button>
             <button
               onClick={handleGenerateMockTraffic}
               disabled={actionLoading !== null}
-              className="py-2.5 bg-primary text-primary-foreground hover:bg-primary/90 disabled:opacity-50 text-xs font-bold rounded-lg transition-colors"
+              className="w-full border border-black py-3 text-xs font-bold tracking-wider text-black hover:bg-neutral-100 transition-colors uppercase disabled:opacity-50"
             >
               {actionLoading === "generate-mock-traffic" ? "Simulando..." : "Simular Tráfego de Teste"}
             </button>
             <button
               onClick={handleClearData}
               disabled={actionLoading !== null}
-              className="py-2.5 bg-destructive/10 hover:bg-destructive/20 border border-destructive/20 disabled:opacity-50 text-destructive text-xs font-bold rounded-lg transition-colors"
+              className="w-full bg-red-600 hover:bg-red-700 text-white py-3 text-xs font-bold tracking-wider uppercase transition-colors disabled:opacity-50"
             >
               {actionLoading === "clear" ? "Limpando..." : "Limpar Dados Gerados"}
             </button>
@@ -230,15 +265,15 @@ export default function AdminDashboard() {
         </div>
 
         {/* Navigation / Logout */}
-        <div className="flex gap-2 pt-4 border-t border-border">
-          <Link to="/" className="flex-1 py-2 border border-input bg-background hover:bg-accent hover:text-accent-foreground text-xs font-semibold rounded-lg flex items-center justify-center gap-1 text-center transition-colors">
-            <ArrowLeft className="h-3.5 w-3.5" /> Ir para Home
+        <div className="flex gap-2 pt-4 border-t border-neutral-200">
+          <Link to="/" className="flex-1 border border-black py-3 text-xs font-bold tracking-wider text-black hover:bg-neutral-100 transition-colors uppercase text-center">
+            <ArrowLeftIcon /> Ir para Home
           </Link>
           <button
             onClick={handleLogout}
-            className="flex-1 py-2 bg-destructive/10 hover:bg-destructive/20 text-destructive text-xs font-semibold rounded-lg flex items-center justify-center gap-1 transition-colors"
+            className="flex-1 bg-red-600 hover:bg-red-700 text-white py-3 text-xs font-bold tracking-wider uppercase transition-colors flex items-center justify-center"
           >
-            <LogOut className="h-3.5 w-3.5" /> Sair
+            <LogOutIcon /> Sair
           </button>
         </div>
 

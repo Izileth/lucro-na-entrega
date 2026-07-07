@@ -3,6 +3,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 import { supabase } from "../api/client";
 
+const BackArrowIcon = () => (
+    <svg className="inline-block mr-1 h-3.5 w-3.5 align-middle" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <line x1="19" y1="12" x2="5" y2="12" />
+        <polyline points="12 19 5 12 12 5" />
+    </svg>
+);
+
 export default function ResetPassword() {
   const { resetPassword, session } = useAuth();
   const navigate = useNavigate();
@@ -76,13 +83,14 @@ export default function ResetPassword() {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground flex items-center justify-center p-6">
-      <div className="max-w-md w-full border border-border bg-card rounded-lg p-8 shadow-sm space-y-6">
+    <div className="min-h-screen bg-white text-black flex items-center justify-center p-5 sm:p-6" style={{ fontFamily: "'Inter', sans-serif" }}>
+      <div className="max-w-md w-full border border-neutral-100 bg-neutral-50 p-6 sm:p-8 space-y-6">
         <div className="text-center space-y-2">
-          <h2 className="text-2xl font-bold tracking-tight">
+          <span className="text-2xl font-extrabold tracking-tight block">FM</span>
+          <h2 className="text-lg font-bold uppercase tracking-wider text-black">
             {isRecoverySession ? "Definir Nova Senha" : "Recuperar Senha"}
           </h2>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-xs text-neutral-500">
             {isRecoverySession
               ? "Crie uma nova senha para acessar sua conta"
               : "Insira seu e-mail para receber um link de redefinição"}
@@ -91,18 +99,18 @@ export default function ResetPassword() {
 
         {success ? (
           <div className="text-center space-y-4 py-4">
-            <h3 className="text-lg font-semibold text-green-600">
+            <h3 className="text-sm font-bold uppercase tracking-wider text-black">
               {isRecoverySession ? "Senha Atualizada!" : "E-mail Enviado!"}
             </h3>
-            <p className="text-sm text-muted-foreground leading-relaxed">
+            <p className="text-xs text-neutral-500 leading-relaxed">
               {isRecoverySession
-                ? "Sua nova senha foi salva. Você será redirecionado para a página de login."
+                ? "Sua nova senha foi salva. Você será redirecionado para a página de login em instantes."
                 : `Se o e-mail estiver cadastrado, enviamos um link para redefinir sua senha.`}
             </p>
             <div className="pt-2">
               <Link
                 to="/login"
-                className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-6 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors"
+                className="w-full inline-block bg-black py-3 text-xs font-bold tracking-wider text-white hover:bg-neutral-800 transition-colors uppercase text-center"
               >
                 Ir para Login
               </Link>
@@ -111,15 +119,15 @@ export default function ResetPassword() {
         ) : (
           <>
             {error && (
-              <div className="p-3 rounded bg-destructive/10 border border-destructive/20 text-destructive text-sm font-medium">
+              <div className="p-3 bg-red-50 border-l-2 border-red-600 text-red-600 text-xs font-medium">
                 {error}
               </div>
             )}
 
             {isRecoverySession ? (
-              <form onSubmit={handleUpdatePassword} className="space-y-4">
+              <form onSubmit={handleUpdatePassword} className="space-y-6">
                 <div className="space-y-1">
-                  <label htmlFor="newPassword" className="text-sm font-medium text-muted-foreground block">
+                  <label htmlFor="newPassword" className="block text-[10px] uppercase font-bold text-neutral-400 tracking-wider">
                     Nova Senha
                   </label>
                   <input
@@ -129,12 +137,12 @@ export default function ResetPassword() {
                     placeholder="••••••••"
                     value={newPassword}
                     onChange={(e) => setNewPassword(e.target.value)}
-                    className="w-full px-3 py-2 border border-input rounded-md bg-background focus:outline-none focus:ring-1 focus:ring-ring text-sm"
+                    className="w-full border-b border-black py-2 text-sm bg-transparent outline-none placeholder-neutral-300 focus:border-neutral-500 transition-colors rounded-none"
                   />
                 </div>
 
                 <div className="space-y-1">
-                  <label htmlFor="confirmPassword" className="text-sm font-medium text-muted-foreground block">
+                  <label htmlFor="confirmPassword" className="block text-[10px] uppercase font-bold text-neutral-400 tracking-wider">
                     Confirmar Nova Senha
                   </label>
                   <input
@@ -144,22 +152,22 @@ export default function ResetPassword() {
                     placeholder="••••••••"
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
-                    className="w-full px-3 py-2 border border-input rounded-md bg-background focus:outline-none focus:ring-1 focus:ring-ring text-sm"
+                    className="w-full border-b border-black py-2 text-sm bg-transparent outline-none placeholder-neutral-300 focus:border-neutral-500 transition-colors rounded-none"
                   />
                 </div>
 
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full py-2 bg-primary text-primary-foreground rounded-md text-sm font-medium hover:bg-primary/90 transition-colors disabled:opacity-50"
+                  className="w-full bg-black py-3 text-xs font-bold tracking-wider text-white hover:bg-neutral-800 transition-colors uppercase disabled:opacity-50"
                 >
                   {loading ? "Carregando..." : "Salvar Nova Senha"}
                 </button>
               </form>
             ) : (
-              <form onSubmit={handleRequestReset} className="space-y-4">
+              <form onSubmit={handleRequestReset} className="space-y-6">
                 <div className="space-y-1">
-                  <label htmlFor="email" className="text-sm font-medium text-muted-foreground block">
+                  <label htmlFor="email" className="block text-[10px] uppercase font-bold text-neutral-400 tracking-wider">
                     E-mail Cadastrado
                   </label>
                   <input
@@ -169,31 +177,31 @@ export default function ResetPassword() {
                     placeholder="seuemail@exemplo.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full px-3 py-2 border border-input rounded-md bg-background focus:outline-none focus:ring-1 focus:ring-ring text-sm"
+                    className="w-full border-b border-black py-2 text-sm bg-transparent outline-none placeholder-neutral-300 focus:border-neutral-500 transition-colors rounded-none"
                   />
                 </div>
 
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full py-2 bg-primary text-primary-foreground rounded-md text-sm font-medium hover:bg-primary/90 transition-colors disabled:opacity-50"
+                  className="w-full bg-black py-3 text-xs font-bold tracking-wider text-white hover:bg-neutral-800 transition-colors uppercase disabled:opacity-50"
                 >
-                  {loading ? "Carregando..." : "Enviar Link de Recuperação"}
+                  {loading ? "Carregando..." : "Enviar Link"}
                 </button>
               </form>
             )}
 
             <div className="text-center">
-              <Link to="/login" className="text-xs text-primary hover:underline">
+              <Link to="/login" className="text-xs text-neutral-500 hover:text-black transition-colors font-medium">
                 Voltar ao login
               </Link>
             </div>
           </>
         )}
 
-        <div className="text-center pt-2">
-          <Link to="/" className="text-xs text-muted-foreground hover:text-foreground">
-            ← Voltar para a página inicial
+        <div className="text-center pt-2 border-t border-neutral-100">
+          <Link to="/" className="text-xs text-neutral-400 hover:text-black transition-colors">
+            <BackArrowIcon /> Voltar para a página inicial
           </Link>
         </div>
       </div>

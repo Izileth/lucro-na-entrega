@@ -2,6 +2,13 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 
+const BackArrowIcon = () => (
+    <svg className="inline-block mr-1 h-3.5 w-3.5 align-middle" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <line x1="19" y1="12" x2="5" y2="12" />
+        <polyline points="12 19 5 12 12 5" />
+    </svg>
+);
+
 export default function Login() {
   const { signIn } = useAuth();
   const navigate = useNavigate();
@@ -27,22 +34,23 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground flex items-center justify-center p-6">
-      <div className="max-w-md w-full border border-border bg-card rounded-lg p-8 shadow-sm space-y-6">
+    <div className="min-h-screen bg-white text-black flex items-center justify-center p-5 sm:p-6" style={{ fontFamily: "'Inter', sans-serif" }}>
+      <div className="max-w-md w-full border border-neutral-100 bg-neutral-50 p-6 sm:p-8 space-y-6">
         <div className="text-center space-y-2">
-          <h2 className="text-2xl font-bold tracking-tight">Login</h2>
-          <p className="text-sm text-muted-foreground">Insira suas credenciais para entrar na conta</p>
+          <span className="text-2xl font-extrabold tracking-tight block">FM</span>
+          <h2 className="text-lg font-bold uppercase tracking-wider text-black">Login</h2>
+          <p className="text-xs text-neutral-500">Insira suas credenciais para acessar sua conta</p>
         </div>
 
         {error && (
-          <div className="p-3 rounded bg-destructive/10 border border-destructive/20 text-destructive text-sm font-medium">
+          <div className="p-3 bg-red-50 border-l-2 border-red-600 text-red-600 text-xs font-medium">
             {error}
           </div>
         )}
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-6">
           <div className="space-y-1">
-            <label htmlFor="email" className="text-sm font-medium text-muted-foreground block">
+            <label htmlFor="email" className="block text-[10px] uppercase font-bold text-neutral-400 tracking-wider">
               E-mail
             </label>
             <input
@@ -52,12 +60,12 @@ export default function Login() {
               placeholder="seuemail@exemplo.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-3 py-2 border border-input rounded-md bg-background focus:outline-none focus:ring-1 focus:ring-ring text-sm"
+              className="w-full border-b border-black py-2 text-sm bg-transparent outline-none placeholder-neutral-300 focus:border-neutral-500 transition-colors rounded-none"
             />
           </div>
 
           <div className="space-y-1">
-            <label htmlFor="password" className="text-sm font-medium text-muted-foreground block">
+            <label htmlFor="password" className="block text-[10px] uppercase font-bold text-neutral-400 tracking-wider">
               Senha
             </label>
             <input
@@ -67,34 +75,34 @@ export default function Login() {
               placeholder="Sua senha"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-3 py-2 border border-input rounded-md bg-background focus:outline-none focus:ring-1 focus:ring-ring text-sm"
+              className="w-full border-b border-black py-2 text-sm bg-transparent outline-none placeholder-neutral-300 focus:border-neutral-500 transition-colors rounded-none"
             />
           </div>
 
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-2 bg-primary text-primary-foreground rounded-md text-sm font-medium hover:bg-primary/90 transition-colors disabled:opacity-50"
+            className="w-full bg-black py-3 text-xs font-bold tracking-wider text-white hover:bg-neutral-800 transition-colors uppercase disabled:opacity-50"
           >
             {loading ? "Carregando..." : "Entrar"}
           </button>
         </form>
 
-        <div className="flex flex-col gap-2 text-center text-xs text-muted-foreground">
-          <Link to="/reset" className="text-primary hover:underline">
+        <div className="flex flex-col gap-2 text-center text-xs text-neutral-500">
+          <Link to="/reset" className="hover:text-black hover:underline transition-colors font-medium">
             Esqueceu a senha?
           </Link>
           <div>
             Ainda não tem uma conta?{" "}
-            <Link to="/create" className="text-primary hover:underline font-semibold">
+            <Link to="/create" className="text-black hover:underline font-bold transition-colors">
               Criar conta
             </Link>
           </div>
         </div>
 
-        <div className="text-center pt-2">
-          <Link to="/" className="text-xs text-muted-foreground hover:text-foreground">
-            ← Voltar para a página inicial
+        <div className="text-center pt-2 border-t border-neutral-100">
+          <Link to="/" className="text-xs text-neutral-400 hover:text-black transition-colors">
+            <BackArrowIcon /> Voltar para a página inicial
           </Link>
         </div>
       </div>

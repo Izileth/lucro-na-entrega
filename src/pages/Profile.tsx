@@ -11,6 +11,13 @@ interface ProfileData {
   created_at: string;
 }
 
+const BackArrowIcon = () => (
+    <svg className="inline-block mr-1 h-3.5 w-3.5 align-middle" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <line x1="19" y1="12" x2="5" y2="12" />
+        <polyline points="12 19 5 12 12 5" />
+    </svg>
+);
+
 export default function Profile() {
   const { slug } = useParams();
   const navigate = useNavigate();
@@ -113,28 +120,28 @@ export default function Profile() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-background text-foreground flex items-center justify-center">
-        <p className="text-sm text-muted-foreground">Carregando dados do perfil...</p>
+      <div className="min-h-screen bg-white text-black flex items-center justify-center" style={{ fontFamily: "'Inter', sans-serif" }}>
+        <p className="text-xs font-bold uppercase tracking-wider text-neutral-400 animate-pulse">Carregando dados do perfil...</p>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-background text-foreground flex items-center justify-center p-6">
-      <div className="max-w-md w-full border border-border bg-card rounded-lg p-8 shadow-sm space-y-6">
-        <div className="flex justify-between items-center pb-4 border-b border-border">
-          <h2 className="text-xl font-bold tracking-tight">Perfil do Usuário</h2>
-          <Link to="/" className="text-xs text-muted-foreground hover:text-foreground">
-            ← Início
+    <div className="min-h-screen bg-white text-black flex items-center justify-center p-5 sm:p-6" style={{ fontFamily: "'Inter', sans-serif" }}>
+      <div className="max-w-md w-full border border-neutral-100 bg-neutral-50 p-6 sm:p-8 space-y-6">
+        <div className="flex justify-between items-center pb-4 border-b border-neutral-200">
+          <h2 className="text-sm font-bold uppercase tracking-wider text-black">Perfil do Usuário</h2>
+          <Link to="/welcome" className="text-xs text-neutral-400 hover:text-black transition-colors font-medium">
+            <BackArrowIcon /> Painel
           </Link>
         </div>
 
         {error && !profileData && (
-          <div className="p-4 rounded bg-destructive/10 border border-destructive/20 text-destructive text-sm font-medium space-y-2">
-            <p className="font-semibold">Acesso Restrito ou Perfil Não Encontrado</p>
-            <p className="text-xs text-muted-foreground">{error}</p>
+          <div className="p-4 bg-red-50 border-l-2 border-red-600 text-red-600 text-xs font-medium space-y-2">
+            <p className="font-bold uppercase tracking-wider">Acesso Restrito ou Perfil Não Encontrado</p>
+            <p className="text-xs leading-relaxed">{error}</p>
             <div className="pt-2">
-              <Link to="/login" className="text-xs text-primary hover:underline font-semibold">
+              <Link to="/login" className="inline-block bg-black px-4 py-2 text-[10px] font-bold tracking-wider text-white hover:bg-neutral-800 transition-colors uppercase">
                 Ir para Login
               </Link>
             </div>
@@ -144,20 +151,20 @@ export default function Profile() {
         {profileData && (
           <div className="space-y-6">
             {saveSuccess && (
-              <div className="p-3 rounded bg-green-500/10 border border-green-500/20 text-green-600 text-sm font-medium">
+              <div className="p-3 bg-green-50 border-l-2 border-green-600 text-green-600 text-xs font-medium uppercase tracking-wider">
                 Perfil atualizado com sucesso!
               </div>
             )}
             {error && (
-              <div className="p-3 rounded bg-destructive/10 border border-destructive/20 text-destructive text-sm font-medium">
+              <div className="p-3 bg-red-50 border-l-2 border-red-600 text-red-600 text-xs font-medium leading-relaxed">
                 {error}
               </div>
             )}
 
             {isEditing ? (
-              <form onSubmit={handleSave} className="space-y-4">
+              <form onSubmit={handleSave} className="space-y-6">
                 <div className="space-y-1">
-                  <label htmlFor="editName" className="text-sm font-medium text-muted-foreground block">
+                  <label htmlFor="editName" className="block text-[10px] uppercase font-bold text-neutral-400 tracking-wider">
                     Nome de Exibição
                   </label>
                   <input
@@ -166,12 +173,12 @@ export default function Profile() {
                     required
                     value={editName}
                     onChange={(e) => setEditName(e.target.value)}
-                    className="w-full px-3 py-2 border border-input rounded-md bg-background focus:outline-none focus:ring-1 focus:ring-ring text-sm"
+                    className="w-full border-b border-black py-2 text-sm bg-transparent outline-none placeholder-neutral-300 focus:border-neutral-500 transition-colors rounded-none"
                   />
                 </div>
 
                 <div className="space-y-1">
-                  <label htmlFor="editSlug" className="text-sm font-medium text-muted-foreground block">
+                  <label htmlFor="editSlug" className="block text-[10px] uppercase font-bold text-neutral-400 tracking-wider">
                     Link do Perfil (Slug)
                   </label>
                   <input
@@ -180,7 +187,7 @@ export default function Profile() {
                     required
                     value={editSlug}
                     onChange={(e) => setEditSlug(e.target.value)}
-                    className="w-full px-3 py-2 border border-input rounded-md bg-background focus:outline-none focus:ring-1 focus:ring-ring text-sm"
+                    className="w-full border-b border-black py-2 text-sm bg-transparent outline-none placeholder-neutral-300 focus:border-neutral-500 transition-colors rounded-none"
                   />
                 </div>
 
@@ -188,7 +195,7 @@ export default function Profile() {
                   <button
                     type="submit"
                     disabled={saveLoading}
-                    className="flex-1 py-2 bg-primary text-primary-foreground rounded-md text-sm font-medium hover:bg-primary/90 transition-colors disabled:opacity-50"
+                    className="flex-1 bg-black py-3 text-xs font-bold tracking-wider text-white hover:bg-neutral-800 transition-colors uppercase disabled:opacity-50"
                   >
                     {saveLoading ? "Salvando..." : "Salvar"}
                   </button>
@@ -200,46 +207,46 @@ export default function Profile() {
                       setEditSlug(profileData.slug || "");
                       setError(null);
                     }}
-                    className="flex-1 py-2 border border-input bg-background rounded-md text-sm font-medium hover:bg-accent hover:text-accent-foreground transition-colors"
+                    className="flex-1 border border-black py-3 text-xs font-bold tracking-wider text-black hover:bg-neutral-100 transition-colors uppercase"
                   >
                     Cancelar
                   </button>
                 </div>
               </form>
             ) : (
-              <div className="space-y-4">
+              <div className="space-y-6">
                 <div className="space-y-1">
-                  <h3 className="text-lg font-bold">
+                  <h3 className="text-base font-extrabold uppercase tracking-wider text-black flex items-center">
                     {profileData.name || "Sem Nome"}
                     {profileData.is_admin && (
-                      <span className="ml-2 text-xs font-semibold px-2 py-0.5 rounded bg-primary/10 text-primary border border-primary/20">
+                      <span className="ml-2 text-[9px] font-bold tracking-wider uppercase px-2 py-0.5 border border-black text-black">
                         Admin
                       </span>
                     )}
                   </h3>
-                  <p className="text-sm text-muted-foreground">@{profileData.slug}</p>
+                  <p className="text-xs text-neutral-400">@{profileData.slug}</p>
                 </div>
 
-                <div className="border-t border-b border-border py-4 space-y-2 text-sm">
-                  <p className="text-muted-foreground">
+                <div className="border-t border-b border-neutral-200 py-4 space-y-2 text-xs text-neutral-500">
+                  <p>
                     Membro desde:{" "}
-                    <strong className="text-foreground">
+                    <strong className="text-black uppercase">
                       {new Date(profileData.created_at).toLocaleDateString("pt-BR")}
                     </strong>
                   </p>
-                  <p className="text-muted-foreground">
+                  <p>
                     Nível de Acesso:{" "}
-                    <strong className="text-foreground">
+                    <strong className="text-black uppercase">
                       {profileData.is_admin ? "Administrador" : "Usuário Comum"}
                     </strong>
                   </p>
                 </div>
 
-                <div className="flex flex-col gap-2 pt-2">
+                <div className="flex flex-col gap-3 pt-2">
                   {isAdmin && (
                     <Link
                       to="/admin"
-                      className="w-full text-center py-2 bg-[#22c55e] text-white hover:bg-[#16a34a] rounded-md text-sm font-bold transition-colors shadow-sm"
+                      className="w-full text-center py-3 bg-black text-white hover:bg-neutral-800 transition-colors text-xs font-bold tracking-wider uppercase"
                     >
                       Painel Administrativo
                     </Link>
@@ -249,7 +256,7 @@ export default function Profile() {
                     {canEdit && (
                       <button
                         onClick={() => setIsEditing(true)}
-                        className="flex-1 py-2 border border-input bg-background rounded-md text-sm font-medium hover:bg-accent hover:text-accent-foreground transition-colors"
+                        className="flex-1 border border-black py-3 text-xs font-bold tracking-wider text-black hover:bg-neutral-100 transition-colors uppercase"
                       >
                         Editar Perfil
                       </button>
@@ -258,7 +265,7 @@ export default function Profile() {
                     {isOwner && (
                       <button
                         onClick={handleSignOut}
-                        className="flex-1 py-2 border border-transparent bg-destructive/10 hover:bg-destructive/20 text-destructive rounded-md text-sm font-medium transition-colors"
+                        className="flex-1 bg-red-600 hover:bg-red-700 text-white py-3 text-xs font-bold tracking-wider uppercase transition-colors"
                       >
                         Sair da Conta
                       </button>
@@ -267,8 +274,8 @@ export default function Profile() {
                 </div>
 
                 {isOwner && (
-                  <p className="text-center text-xs text-muted-foreground pt-4">
-                    Conectado como <strong className="text-foreground">{user.email}</strong>
+                  <p className="text-center text-[10px] text-neutral-400 pt-4">
+                    Conectado como <strong className="text-black">{user.email}</strong>
                   </p>
                 )}
               </div>

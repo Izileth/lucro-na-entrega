@@ -2,6 +2,13 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 
+const BackArrowIcon = () => (
+    <svg className="inline-block mr-1 h-3.5 w-3.5 align-middle" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <line x1="19" y1="12" x2="5" y2="12" />
+        <polyline points="12 19 5 12 12 5" />
+    </svg>
+);
+
 export default function Register() {
   const { signUp } = useAuth();
   const navigate = useNavigate();
@@ -31,8 +38,6 @@ export default function Register() {
 
     try {
       await signUp(email, password, name);
-      // Email verification is disabled, so they are logged in immediately.
-      // Redirect to home page right away.
       navigate("/welcome");
     } catch (err: any) {
       console.error(err);
@@ -43,22 +48,23 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground flex items-center justify-center p-6">
-      <div className="max-w-md w-full border border-border bg-card rounded-lg p-8 shadow-sm space-y-6">
+    <div className="min-h-screen bg-white text-black flex items-center justify-center p-5 sm:p-6" style={{ fontFamily: "'Inter', sans-serif" }}>
+      <div className="max-w-md w-full border border-neutral-100 bg-neutral-50 p-6 sm:p-8 space-y-6">
         <div className="text-center space-y-2">
-          <h2 className="text-2xl font-bold tracking-tight">Criar Conta</h2>
-          <p className="text-sm text-muted-foreground">Cadastre-se gratuitamente abaixo</p>
+          <span className="text-2xl font-extrabold tracking-tight block">FM</span>
+          <h2 className="text-lg font-bold uppercase tracking-wider text-black">Criar Conta</h2>
+          <p className="text-xs text-neutral-500">Cadastre-se gratuitamente abaixo</p>
         </div>
 
         {error && (
-          <div className="p-3 rounded bg-destructive/10 border border-destructive/20 text-destructive text-sm font-medium">
+          <div className="p-3 bg-red-50 border-l-2 border-red-600 text-red-600 text-xs font-medium">
             {error}
           </div>
         )}
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-6">
           <div className="space-y-1">
-            <label htmlFor="name" className="text-sm font-medium text-muted-foreground block">
+            <label htmlFor="name" className="block text-[10px] uppercase font-bold text-neutral-400 tracking-wider">
               Nome Completo
             </label>
             <input
@@ -68,12 +74,12 @@ export default function Register() {
               placeholder="Seu nome"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full px-3 py-2 border border-input rounded-md bg-background focus:outline-none focus:ring-1 focus:ring-ring text-sm"
+              className="w-full border-b border-black py-2 text-sm bg-transparent outline-none placeholder-neutral-300 focus:border-neutral-500 transition-colors rounded-none"
             />
           </div>
 
           <div className="space-y-1">
-            <label htmlFor="email" className="text-sm font-medium text-muted-foreground block">
+            <label htmlFor="email" className="block text-[10px] uppercase font-bold text-neutral-400 tracking-wider">
               E-mail
             </label>
             <input
@@ -83,12 +89,12 @@ export default function Register() {
               placeholder="seuemail@exemplo.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-3 py-2 border border-input rounded-md bg-background focus:outline-none focus:ring-1 focus:ring-ring text-sm"
+              className="w-full border-b border-black py-2 text-sm bg-transparent outline-none placeholder-neutral-300 focus:border-neutral-500 transition-colors rounded-none"
             />
           </div>
 
           <div className="space-y-1">
-            <label htmlFor="password" className="text-sm font-medium text-muted-foreground block">
+            <label htmlFor="password" className="block text-[10px] uppercase font-bold text-neutral-400 tracking-wider">
               Senha (mínimo 6 caracteres)
             </label>
             <input
@@ -98,12 +104,12 @@ export default function Register() {
               placeholder="••••••••"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-3 py-2 border border-input rounded-md bg-background focus:outline-none focus:ring-1 focus:ring-ring text-sm"
+              className="w-full border-b border-black py-2 text-sm bg-transparent outline-none placeholder-neutral-300 focus:border-neutral-500 transition-colors rounded-none"
             />
           </div>
 
           <div className="space-y-1">
-            <label htmlFor="confirmPassword" className="text-sm font-medium text-muted-foreground block">
+            <label htmlFor="confirmPassword" className="block text-[10px] uppercase font-bold text-neutral-400 tracking-wider">
               Confirmar Senha
             </label>
             <input
@@ -113,29 +119,29 @@ export default function Register() {
               placeholder="••••••••"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
-              className="w-full px-3 py-2 border border-input rounded-md bg-background focus:outline-none focus:ring-1 focus:ring-ring text-sm"
+              className="w-full border-b border-black py-2 text-sm bg-transparent outline-none placeholder-neutral-300 focus:border-neutral-500 transition-colors rounded-none"
             />
           </div>
 
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-2 bg-primary text-primary-foreground rounded-md text-sm font-medium hover:bg-primary/90 transition-colors disabled:opacity-50"
+            className="w-full bg-black py-3 text-xs font-bold tracking-wider text-white hover:bg-neutral-800 transition-colors uppercase disabled:opacity-50"
           >
             {loading ? "Carregando..." : "Cadastrar"}
           </button>
         </form>
 
-        <div className="text-center text-xs text-muted-foreground">
+        <div className="text-center text-xs text-neutral-500">
           Já possui uma conta?{" "}
-          <Link to="/login" className="text-primary hover:underline font-semibold">
+          <Link to="/login" className="text-black hover:underline font-bold transition-colors">
             Faça login
           </Link>
         </div>
 
-        <div className="text-center pt-2">
-          <Link to="/" className="text-xs text-muted-foreground hover:text-foreground">
-            ← Voltar para a página inicial
+        <div className="text-center pt-2 border-t border-neutral-100">
+          <Link to="/" className="text-xs text-neutral-400 hover:text-black transition-colors">
+            <BackArrowIcon /> Voltar para a página inicial
           </Link>
         </div>
       </div>

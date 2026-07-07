@@ -13,6 +13,83 @@ interface TimelineItem {
     description: string;
 }
 
+const ShieldIcon: React.FC<{ className?: string }> = ({ className = "h-10 w-10" }) => (
+    <svg
+        className={className}
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.25"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+    >
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+    </svg>
+);
+
+const SuccessIcon: React.FC<{ className?: string }> = ({ className = "h-12 w-12" }) => (
+    <svg
+        className={className}
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.25"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+    >
+        <path d="M4.5 16.5c-1.5 1.5-2.5 3.5-2.5 5.5C4 22 6 21 7.5 19.5" />
+        <path d="M12 2C6.5 7.5 5.5 13 6.5 15.5l2 2C11 18.5 16.5 17.5 22 12c1.5-1.5 2-4.5 2-4.5s-3 .5-4.5 2" />
+        <path d="M9 15l6-6" />
+        <circle cx="14.5" cy="9.5" r="1" fill="currentColor" />
+    </svg>
+);
+
+const ArrowUpRightIcon: React.FC<{ className?: string }> = ({ className = "h-4 w-4" }) => (
+    <svg
+        className={className}
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.25"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+    >
+        <line x1="7" y1="17" x2="17" y2="7" />
+        <polyline points="7 7 17 7 17 17" />
+    </svg>
+);
+
+const CloseIcon: React.FC<{ className?: string }> = ({ className = "h-6 w-6" }) => (
+    <svg
+        className={className}
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.25"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+    >
+        <line x1="18" y1="6" x2="6" y2="18" />
+        <line x1="6" y1="6" x2="18" y2="18" />
+    </svg>
+);
+
+const MenuIcon: React.FC<{ className?: string }> = ({ className = "h-6 w-6" }) => (
+    <svg
+        className={className}
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.25"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+    >
+        <line x1="4" y1="12" x2="20" y2="12" />
+        <line x1="4" y1="6" x2="20" y2="6" />
+        <line x1="4" y1="18" x2="20" y2="18" />
+    </svg>
+);
+
 const stats: StatItem[] = [
     { value: "+R$ 1.500", label: "de lucro médio extra ao mês" },
     { value: "40%", label: "menos custos de manutenção" },
@@ -91,6 +168,7 @@ const Page: React.FC = () => {
     const [phone, setPhone] = useState("");
     const [success, setSuccess] = useState(false);
     const [errorMsg, setErrorMsg] = useState("");
+    const [sidebarOpen, setSidebarOpen] = useState(false);
 
     useEffect(() => {
         logPageView(window.location.pathname);
@@ -128,22 +206,114 @@ const Page: React.FC = () => {
             <div className="min-h-screen w-full bg-white text-black" style={{ fontFamily: "'Inter', sans-serif" }}>
                 <div className="mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-10">
                     {/* ============ HEADER ============ */}
-                    <header className="flex items-center justify-between py-6 sm:py-8">
+                    <header className="flex items-center justify-between py-6 sm:py-8 relative z-20">
                         <span className="text-xl font-extrabold tracking-tight sm:text-2xl">FM</span>
 
-                        <div className="hidden flex-col items-center gap-[3px] sm:flex">
-                            <span className="block h-[2px] w-8 bg-black" />
-                            <span className="block h-[2px] w-8 bg-black" />
-                            <span className="block h-[2px] w-8 bg-black" />
+                        {/* Desktop Navigation Links */}
+                        <nav className="hidden md:flex items-center gap-8">
+                            <a href="#sobre" className="text-xs font-bold tracking-wider text-neutral-500 hover:text-black uppercase transition-colors">O Método</a>
+                            <a href="#beneficios" className="text-xs font-bold tracking-wider text-neutral-500 hover:text-black uppercase transition-colors">Benefícios</a>
+                            <a href="#publico" className="text-xs font-bold tracking-wider text-neutral-500 hover:text-black uppercase transition-colors">Para Quem</a>
+                            <a href="#como-funciona" className="text-xs font-bold tracking-wider text-neutral-500 hover:text-black uppercase transition-colors">Como Funciona</a>
+                            <a href="#confianca" className="text-xs font-bold tracking-wider text-neutral-500 hover:text-black uppercase transition-colors">Garantia</a>
+                        </nav>
+
+                        <div className="flex items-center gap-4">
+                            <Link 
+                                to="/login"
+                                className="hidden sm:inline-block bg-black px-4 py-2 text-[11px] font-semibold tracking-wider text-white sm:px-5 sm:text-xs hover:bg-neutral-800 transition-colors uppercase"
+                            >
+                                ENTRAR
+                            </Link>
+
+                            {/* Mobile Hamburger Button */}
+                            <button 
+                                onClick={() => setSidebarOpen(true)}
+                                className="p-2 focus:outline-none md:hidden text-black hover:text-neutral-500 transition-colors"
+                                aria-label="Open Menu"
+                            >
+                                <MenuIcon className="h-6 w-6" />
+                            </button>
+                        </div>
+                    </header>
+
+                    {/* Mobile Sidebar Overlay */}
+                    {sidebarOpen && (
+                        <div 
+                            className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm transition-opacity duration-300 md:hidden"
+                            onClick={() => setSidebarOpen(false)}
+                        />
+                    )}
+
+                    {/* Mobile Sidebar Drawer */}
+                    <div 
+                        className={`fixed right-0 top-0 bottom-0 z-50 w-full max-w-[300px] bg-white p-6 shadow-2xl transition-transform duration-300 ease-in-out transform md:hidden ${
+                            sidebarOpen ? "translate-x-0" : "translate-x-full"
+                        }`}
+                    >
+                        <div className="flex items-center justify-between pb-6 border-b border-neutral-100">
+                            <span className="text-xl font-extrabold tracking-tight">FM</span>
+                            <button 
+                                onClick={() => setSidebarOpen(false)}
+                                className="text-neutral-400 hover:text-black focus:outline-none p-1 transition-colors"
+                                aria-label="Close Menu"
+                            >
+                                <CloseIcon className="h-6 w-6" />
+                            </button>
                         </div>
 
-                        <Link 
-                            to="/login"
-                            className="bg-black px-4 py-2 text-[11px] font-semibold tracking-wider text-white sm:px-5 sm:text-xs hover:bg-neutral-800 transition-colors uppercase"
-                        >
-                            ENTRAR
-                        </Link>
-                    </header>
+                        <nav className="mt-8 flex flex-col gap-6">
+                            <a 
+                                href="#sobre" 
+                                onClick={() => setSidebarOpen(false)}
+                                className="text-sm font-semibold tracking-wider text-neutral-600 hover:text-black uppercase transition-colors"
+                            >
+                                O Método
+                            </a>
+                            <a 
+                                href="#beneficios" 
+                                onClick={() => setSidebarOpen(false)}
+                                className="text-sm font-semibold tracking-wider text-neutral-600 hover:text-black uppercase transition-colors"
+                            >
+                                Benefícios
+                            </a>
+                            <a 
+                                href="#publico" 
+                                onClick={() => setSidebarOpen(false)}
+                                className="text-sm font-semibold tracking-wider text-neutral-600 hover:text-black uppercase transition-colors"
+                            >
+                                Para Quem É
+                            </a>
+                            <a 
+                                href="#como-funciona" 
+                                onClick={() => setSidebarOpen(false)}
+                                className="text-sm font-semibold tracking-wider text-neutral-600 hover:text-black uppercase transition-colors"
+                            >
+                                Como Funciona
+                            </a>
+                            <a 
+                                href="#confianca" 
+                                onClick={() => setSidebarOpen(false)}
+                                className="text-sm font-semibold tracking-wider text-neutral-600 hover:text-black uppercase transition-colors"
+                            >
+                                Garantia
+                            </a>
+                            <a 
+                                href="#conversao" 
+                                onClick={() => setSidebarOpen(false)}
+                                className="text-sm font-semibold tracking-wider text-neutral-600 hover:text-black uppercase transition-colors"
+                            >
+                                Cadastro
+                            </a>
+                            <Link 
+                                to="/login"
+                                onClick={() => setSidebarOpen(false)}
+                                className="mt-4 w-full bg-black py-3 text-center text-xs font-bold tracking-wider text-white hover:bg-neutral-800 transition-colors uppercase"
+                            >
+                                ENTRAR
+                            </Link>
+                        </nav>
+                    </div>
 
                     {/* ============ HERO (Pergunta 1) ============ */}
                     <section className="relative mt-2 sm:mt-4">
@@ -200,7 +370,7 @@ const Page: React.FC = () => {
                     </section>
 
                     {/* ============ WHAT IS IT (Pergunta 2) ============ */}
-                    <section className="mt-16 sm:mt-24">
+                    <section id="sobre" className="mt-16 sm:mt-24">
                         <p className="text-[11px] tracking-wide text-neutral-400">[o que é o método]</p>
 
                         <div className="mt-6 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-14">
@@ -230,7 +400,7 @@ const Page: React.FC = () => {
                     </section>
 
                     {/* ============ BENEFITS (Pergunta 3) ============ */}
-                    <section className="mt-16 sm:mt-24">
+                    <section id="beneficios" className="mt-16 sm:mt-24">
                         <p className="text-[11px] tracking-wide text-neutral-400">[por que participar - benefícios]</p>
                         
                         <div className="mt-6 divide-y divide-neutral-200 border-t border-neutral-200">
@@ -252,7 +422,7 @@ const Page: React.FC = () => {
                     </section>
 
                     {/* ============ AUDIENCE (Pergunta 4) ============ */}
-                    <section className="mt-16 sm:mt-24">
+                    <section id="publico" className="mt-16 sm:mt-24">
                         <p className="text-[11px] tracking-wide text-neutral-400">[para quem é o método]</p>
                         
                         <div className="mt-6 divide-y divide-neutral-200 border-t border-neutral-200">
@@ -274,7 +444,7 @@ const Page: React.FC = () => {
                     </section>
 
                     {/* ============ HOW IT WORKS (Pergunta 5) ============ */}
-                    <section className="mt-16 sm:mt-24">
+                    <section id="como-funciona" className="mt-16 sm:mt-24">
                         <p className="text-[11px] tracking-wide text-neutral-400">[como funciona o método]</p>
                         
                         <div className="mt-6 divide-y divide-neutral-200 border-t border-neutral-200">
@@ -296,7 +466,7 @@ const Page: React.FC = () => {
                     </section>
 
                     {/* ============ WHY TRUST / CREDIBILITY (Pergunta 6) ============ */}
-                    <section className="mt-16 sm:mt-24">
+                    <section id="confianca" className="mt-16 sm:mt-24">
                         <p className="text-[11px] tracking-wide text-neutral-400">[por que você deve confiar]</p>
 
                         <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">
@@ -310,7 +480,7 @@ const Page: React.FC = () => {
 
                             {/* Garantia */}
                             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-5 bg-neutral-50 p-5 sm:p-8 text-black border border-neutral-200">
-                                <div className="text-3xl sm:text-4xl">🛡️</div>
+                                <ShieldIcon className="h-10 w-10 text-black flex-shrink-0" />
                                 <div>
                                     <p className="text-base font-bold uppercase tracking-wider">Garantia Incondicional de 7 Dias</p>
                                     <p className="mt-1 text-xs leading-relaxed text-neutral-500 sm:text-sm">
@@ -337,7 +507,9 @@ const Page: React.FC = () => {
                             <div className="relative min-h-[340px] w-full bg-neutral-50 p-6 sm:row-span-2 sm:min-h-[560px] flex flex-col justify-center border border-neutral-100">
                                 {success ? (
                                     <div className="text-center space-y-4">
-                                        <div className="text-4xl animate-bounce">🚀</div>
+                                        <div className="flex justify-center">
+                                            <SuccessIcon className="h-12 w-12 text-black animate-bounce" />
+                                        </div>
                                         <h3 className="text-lg font-bold text-black uppercase tracking-wider">Cadastro Confirmado!</h3>
                                         <p className="text-xs text-neutral-500 max-w-xs mx-auto leading-relaxed">
                                             Seus dados foram salvos com sucesso. Em breve entraremos em contato com as instruções de acesso ao método Fast Motors.
@@ -421,7 +593,7 @@ const Page: React.FC = () => {
                                     <div className="absolute bottom-3 left-3 right-3 bg-[#2b2b2b]/90 px-4 py-3 text-white sm:bottom-4 sm:left-4 sm:right-4">
                                         <div className="flex items-center justify-between text-[11px] sm:text-xs">
                                             <span>Planilha de Custo Rodado inclusa</span>
-                                            <span className="text-base leading-none">↗</span>
+                                            <ArrowUpRightIcon className="h-4 w-4" />
                                         </div>
                                         <p className="mt-1 text-sm font-bold sm:text-base">GRATUITO</p>
                                     </div>

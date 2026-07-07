@@ -369,6 +369,53 @@ const Page: React.FC = () => {
                         </h1>
                     </section>
 
+                    {/* ============ HERO GALLERY (Below Hero) ============ */}
+                    <section className="mt-8 sm:mt-12">
+                        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
+                            {/* Imagem Principal da Galeria (Esquerda) */}
+                            <div className="relative min-h-[340px] w-full overflow-hidden bg-neutral-200 sm:row-span-2 sm:min-h-[560px]">
+                                <img
+                                    src="https://images.unsplash.com/photo-1599819811279-d5ad9cccf838?auto=format&fit=crop&w=1200&q=80"
+                                    alt="Piloto nas ruas da cidade"
+                                    className="h-full w-full object-cover hover:scale-105 transition-transform duration-500"
+                                />
+                                <div className="absolute bottom-3 left-3 right-3 bg-[#2b2b2b]/90 px-4 py-3 text-white sm:bottom-4 sm:left-4 sm:right-4">
+                                    <p className="text-[10px] uppercase font-bold tracking-wider text-neutral-400">Domínio Urbano</p>
+                                    <p className="mt-1 text-sm font-bold sm:text-base">MÉTODO FAST MOTORS</p>
+                                </div>
+                            </div>
+
+                            <div className="grid grid-cols-1 gap-4 sm:gap-5">
+                                {/* Imagem Secundária Superior (Direita) */}
+                                <div className="relative min-h-[220px] w-full overflow-hidden bg-neutral-200 sm:min-h-[260px]">
+                                    <img
+                                        src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=1200&q=80"
+                                        alt="Moto em alta performance"
+                                        className="h-full w-full object-cover hover:scale-105 transition-transform duration-500"
+                                    />
+                                    <div className="absolute bottom-3 left-3 right-3 bg-[#2b2b2b]/90 px-4 py-3 text-white sm:bottom-4 sm:left-4 sm:right-4">
+                                        <p className="text-[10px] uppercase font-bold tracking-wider text-neutral-400">Alta Performance</p>
+                                        <p className="mt-1 text-sm font-bold sm:text-base">MAXIMIZE SEUS GANHOS</p>
+                                    </div>
+                                </div>
+
+                                {/* Imagem Secundária Inferior (Direita) */}
+                                <div className="relative w-full min-h-[160px] overflow-hidden bg-neutral-200 sm:ml-auto sm:max-w-[260px] sm:min-h-[190px]">
+                                    <img
+                                        src="https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&w=800&q=80"
+                                        alt="Foco no destino"
+                                        className="h-full w-full object-cover hover:scale-105 transition-transform duration-500"
+                                    />
+                                    <div className="absolute bottom-2 left-2 right-2 bg-[#2b2b2b]/90 px-3 py-2 text-white">
+                                        <p className="text-[10px] leading-tight sm:text-[11px]">
+                                            Agilidade e Precisão <br /> no Trânsito
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
                     {/* ============ WHAT IS IT (Pergunta 2) ============ */}
                     <section id="sobre" className="mt-16 sm:mt-24">
                         <p className="text-[11px] tracking-wide text-neutral-400">[o que é o método]</p>

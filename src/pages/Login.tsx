@@ -17,7 +17,7 @@ export default function Login() {
 
     try {
       await signIn(email, password);
-      navigate("/");
+      navigate("/welcome");
     } catch (err: any) {
       console.error(err);
       setError(err.message || "Erro ao fazer login. Verifique suas credenciais.");

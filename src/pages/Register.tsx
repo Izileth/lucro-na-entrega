@@ -33,7 +33,7 @@ export default function Register() {
       await signUp(email, password, name);
       // Email verification is disabled, so they are logged in immediately.
       // Redirect to home page right away.
-      navigate("/");
+      navigate("/welcome");
     } catch (err: any) {
       console.error(err);
       setError(err.message || "Erro ao criar conta. Tente novamente.");

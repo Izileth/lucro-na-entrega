@@ -14,36 +14,66 @@ interface TimelineItem {
 }
 
 const stats: StatItem[] = [
-    { value: "+R$ 1.500", label: "ganho extra médio mensal" },
-    { value: "15 MIN", label: "para aprender a rota" },
-    { value: "+1.200", label: "entregadores parceiros" },
-    { value: "2X", label: "mais lucro por corrida" },
+    { value: "+R$ 1.500", label: "de lucro médio extra ao mês" },
+    { value: "40%", label: "menos custos de manutenção" },
+    { value: "+1.200", label: "entregadores faturando" },
+    { value: "2X", label: "mais lucro por Km rodado" },
 ];
 
-const timeline: TimelineItem[] = [
+const benefits: TimelineItem[] = [
     {
-        index: "[01]",
-        title: "ROTAS DE PRECISÃO",
+        index: "[B-01]",
+        title: "BENEFÍCIO EMOCIONAL: PARAR DE RODAR NO ESCURO",
         description:
-            "Pare de rodar no escuro. Aprenda a identificar as melhores regiões de alta demanda em tempo real e pare de aceitar corridas baratas.",
+            "Pare de rodar desesperado para bater metas diárias. Trabalhe com segurança e tranquilidade, sabendo exatamente onde e quando as corridas de alto valor acontecem.",
     },
     {
-        index: "[02]",
-        title: "CUSTO DO KM",
+        index: "[B-02]",
+        title: "BENEFÍCIO DIMENSIONAL: GANHO EXTRA DE R$ 1.500",
         description:
-            "Entenda exatamente quanto você gasta por quilômetro rodado e reduza os custos de combustível e manutenção da moto.",
+            "Aumente seu faturamento líquido mensal de forma mensurável e imediata aplicando técnicas de logística inteligente no asfalto.",
     },
     {
-        index: "[03]",
-        title: "MÚLTIPLOS APLICATIVOS",
+        index: "[B-03]",
+        title: "BENEFÍCIO FUNCIONAL: CUSTO DE RODAGEM CONTROLADO",
         description:
-            "Como conciliar diferentes plataformas de entrega ao mesmo tempo sem risco de bloqueio ou suspensão da sua conta.",
+            "Otimize suas rotas diárias, reduza o desgaste da sua moto e tenha acesso a uma ferramenta que calcula seu custo por quilômetro rodado de forma simples.",
+    },
+];
+
+const audience: TimelineItem[] = [
+    {
+        index: "[A-01]",
+        title: "MOTOBOYS EM TEMPO INTEGRAL",
+        description: "Para quem vive do asfalto de segunda a sábado e quer otimizar suas horas de trabalho para aumentar a margem de lucro real.",
     },
     {
-        index: "[04]",
-        title: "NEGÓCIO PRÓPRIO",
-        description:
-            "Aprenda a tratar suas corridas como uma empresa, definindo metas diárias e tendo total previsibilidade financeira.",
+        index: "[A-02]",
+        title: "ENTREGADORES DE FIM DE SEMANA",
+        description: "Para quem busca uma renda extra eficiente nas horas de folga, aproveitando as taxas dinâmicas sem desperdiçar combustível.",
+    },
+    {
+        index: "[A-03]",
+        title: "INICIANTES NO DELIVERY",
+        description: "Para quem está começando nas entregas e quer aprender as estratégias corretas desde o primeiro dia, evitando banimentos.",
+    },
+];
+
+const steps: TimelineItem[] = [
+    {
+        index: "[S-01]",
+        title: "1. CADASTRO & DIAGNÓSTICO",
+        description: "Você faz seu cadastro e recebe nossa ferramenta exclusiva para calcular o custo real de rodagem da sua moto.",
+    },
+    {
+        index: "[S-02]",
+        title: "2. MAPEAMENTO DE ROTAS",
+        description: "Aprenda a analisar os mapas das plataformas de entrega e prever as áreas de maior demanda e tarifas dinâmicas.",
+    },
+    {
+        index: "[S-03]",
+        title: "3. MULTIPLICAÇÃO DE GANHOS",
+        description: "Aplique a estratégia de múltiplos aplicativos com segurança e multiplique seu lucro líquido por corrida.",
     },
 ];
 
@@ -115,7 +145,7 @@ const Page: React.FC = () => {
                         </Link>
                     </header>
 
-                    {/* ============ HERO ============ */}
+                    {/* ============ HERO (Pergunta 1) ============ */}
                     <section className="relative mt-2 sm:mt-4">
                         <h1
                             className="select-none text-center leading-[0.78] tracking-tight text-black"
@@ -136,6 +166,12 @@ const Page: React.FC = () => {
                                 <p className="mt-2 text-[11px] leading-relaxed text-neutral-500 sm:text-xs">
                                     Multiplique seus ganhos, domine suas rotas e transforme cada corrida de entrega em lucro de verdade.
                                 </p>
+                                <a 
+                                    href="#conversao"
+                                    className="mt-4 inline-block bg-black px-4 py-2 text-[10px] font-bold tracking-wider text-white hover:bg-neutral-800 transition-colors uppercase sm:text-[11px]"
+                                >
+                                    Quero Garantir Meu Acesso
+                                </a>
                             </div>
 
                             <dl className="grid grid-cols-2 gap-x-6 gap-y-3 text-center sm:flex sm:flex-col sm:gap-2 sm:pt-1 sm:text-right">
@@ -163,14 +199,19 @@ const Page: React.FC = () => {
                         </h1>
                     </section>
 
-                    {/* ============ ABOUT ============ */}
+                    {/* ============ WHAT IS IT (Pergunta 2) ============ */}
                     <section className="mt-16 sm:mt-24">
-                        <p className="text-[11px] tracking-wide text-neutral-400">[sobre o método]</p>
+                        <p className="text-[11px] tracking-wide text-neutral-400">[o que é o método]</p>
 
                         <div className="mt-6 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-14">
-                            <p className="max-w-md text-lg font-medium leading-snug sm:text-xl">
-                                Nossa missão é tirar o entregador da corrida dos ratos nos aplicativos de entrega, dando controle total sobre as rotas e multiplicando seus lucros reais no asfalto.
-                            </p>
+                            <div className="max-w-md space-y-4">
+                                <p className="text-lg font-medium leading-snug sm:text-xl">
+                                    O Fast Motors é o único método passo a passo de logística e performance urbana projetado para motoboys e entregadores de aplicativos dominarem as rotas e multiplicarem seus lucros reais.
+                                </p>
+                                <p className="text-xs leading-relaxed text-neutral-500 sm:text-sm">
+                                    Não se trata de trabalhar mais horas, mas sim de trabalhar de forma inteligente. Nós ensinamos as estratégias exatas para faturar mais rodando menos quilômetros.
+                                </p>
+                            </div>
 
                             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-5 bg-[#2b2b2b] p-5 sm:p-8 text-white">
                                 <img
@@ -179,20 +220,24 @@ const Page: React.FC = () => {
                                     className="h-16 w-16 flex-shrink-0 rounded-sm object-cover sm:h-20 sm:w-20"
                                 />
                                 <div>
-                                    <p className="text-lg font-bold sm:text-xl">Acelere seus Resultados!</p>
+                                    <p className="text-lg font-bold sm:text-xl">Autoridade das Ruas</p>
                                     <p className="mt-1 text-xs leading-relaxed text-neutral-300 sm:text-sm">
-                                        Um treinamento de logística e performance urbana, criado por especialistas que entendem a realidade das ruas.
+                                        Desenvolvido por quem vive o dia a dia do asfalto, combinando logística urbana e testes de rua validados na prática.
                                     </p>
                                 </div>
                             </div>
                         </div>
+                    </section>
 
-                        {/* Timeline */}
-                        <div className="mt-14 divide-y divide-neutral-200 border-t border-neutral-200 sm:mt-16">
-                            {timeline.map((item) => (
+                    {/* ============ BENEFITS (Pergunta 3) ============ */}
+                    <section className="mt-16 sm:mt-24">
+                        <p className="text-[11px] tracking-wide text-neutral-400">[por que participar - benefícios]</p>
+                        
+                        <div className="mt-6 divide-y divide-neutral-200 border-t border-neutral-200">
+                            {benefits.map((item) => (
                                 <div
                                     key={item.index}
-                                    className="grid grid-cols-1 gap-2 py-5 sm:grid-cols-[60px_180px_1fr] sm:items-baseline sm:gap-6 sm:py-6"
+                                    className="grid grid-cols-1 gap-2 py-5 sm:grid-cols-[60px_220px_1fr] sm:items-baseline sm:gap-6 sm:py-6"
                                 >
                                     <span className="text-xs text-neutral-400">{item.index}</span>
                                     <h3 className="text-sm font-extrabold tracking-tight sm:text-base">
@@ -206,14 +251,84 @@ const Page: React.FC = () => {
                         </div>
                     </section>
 
-                    {/* ============ FEATURED PROJECTS ============ */}
-                    <section className="mt-20 pb-20 sm:mt-28">
+                    {/* ============ AUDIENCE (Pergunta 4) ============ */}
+                    <section className="mt-16 sm:mt-24">
+                        <p className="text-[11px] tracking-wide text-neutral-400">[para quem é o método]</p>
+                        
+                        <div className="mt-6 divide-y divide-neutral-200 border-t border-neutral-200">
+                            {audience.map((item) => (
+                                <div
+                                    key={item.index}
+                                    className="grid grid-cols-1 gap-2 py-5 sm:grid-cols-[60px_220px_1fr] sm:items-baseline sm:gap-6 sm:py-6"
+                                >
+                                    <span className="text-xs text-neutral-400">{item.index}</span>
+                                    <h3 className="text-sm font-extrabold tracking-tight sm:text-base">
+                                        {item.title}
+                                    </h3>
+                                    <p className="max-w-md text-xs leading-relaxed text-neutral-500 sm:text-sm">
+                                        {item.description}
+                                    </p>
+                                </div>
+                            ))}
+                        </div>
+                    </section>
+
+                    {/* ============ HOW IT WORKS (Pergunta 5) ============ */}
+                    <section className="mt-16 sm:mt-24">
+                        <p className="text-[11px] tracking-wide text-neutral-400">[como funciona o método]</p>
+                        
+                        <div className="mt-6 divide-y divide-neutral-200 border-t border-neutral-200">
+                            {steps.map((item) => (
+                                <div
+                                    key={item.index}
+                                    className="grid grid-cols-1 gap-2 py-5 sm:grid-cols-[60px_220px_1fr] sm:items-baseline sm:gap-6 sm:py-6"
+                                >
+                                    <span className="text-xs text-neutral-400">{item.index}</span>
+                                    <h3 className="text-sm font-extrabold tracking-tight sm:text-base">
+                                        {item.title}
+                                    </h3>
+                                    <p className="max-w-md text-xs leading-relaxed text-neutral-500 sm:text-sm">
+                                        {item.description}
+                                    </p>
+                                </div>
+                            ))}
+                        </div>
+                    </section>
+
+                    {/* ============ WHY TRUST / CREDIBILITY (Pergunta 6) ============ */}
+                    <section className="mt-16 sm:mt-24">
+                        <p className="text-[11px] tracking-wide text-neutral-400">[por que você deve confiar]</p>
+
+                        <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">
+                            {/* Prova */}
+                            <div className="flex flex-col gap-4 bg-[#2b2b2b] p-6 text-white sm:p-8">
+                                <p className="text-sm italic leading-relaxed text-neutral-300">
+                                    "O método mudou meu jogo. Eu rodava 12 horas por dia pra fazer o que hoje faço em 6 horas rodando apenas nas áreas estratégicas. Valeu cada segundo."
+                                </p>
+                                <p className="text-xs font-bold uppercase tracking-wider">— Carlos S., Entregador em São Paulo (+R$ 1.800/mês de lucro extra)</p>
+                            </div>
+
+                            {/* Garantia */}
+                            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-5 bg-neutral-50 p-5 sm:p-8 text-black border border-neutral-200">
+                                <div className="text-3xl sm:text-4xl">🛡️</div>
+                                <div>
+                                    <p className="text-base font-bold uppercase tracking-wider">Garantia Incondicional de 7 Dias</p>
+                                    <p className="mt-1 text-xs leading-relaxed text-neutral-500 sm:text-sm">
+                                        Risco zero. Experimente o método Fast Motors por 7 dias. Se você não notar diferença nos seus ganhos diários ou não ficar satisfeito, devolvemos todo o seu dinheiro.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* ============ FINAL CTA / CONVERSION (Pergunta 7) ============ */}
+                    <section id="conversao" className="mt-20 pb-20 sm:mt-28">
                         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:items-start sm:gap-8">
                             <p className="text-[11px] tracking-wide text-neutral-400">
-                                [conteúdo & bônus]
+                                [próximo passo - cadastro]
                             </p>
                             <p className="text-lg font-medium leading-snug sm:text-xl">
-                                Entregamos todas as ferramentas que você precisa para gerenciar seus custos, dominar as ruas e maximizar seu faturamento diário.
+                                Preencha seus dados abaixo para receber acesso imediato às aulas práticas e começar a multiplicar seus ganhos hoje mesmo.
                             </p>
                         </div>
 

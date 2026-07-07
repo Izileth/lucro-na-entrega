@@ -33,16 +33,17 @@ export default function App() {
           <AuthProvider>
             <BrowserRouter>
               <Routes>
-                <Route path="/" element={<Home />} />
+                <Route path="/" element={<Page />} />
+                <Route path="/welcome" element={<Home />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/create" element={<Register />} />
                 <Route path="/reset" element={<ResetPassword />} />
                 <Route path="/user/:slug" element={<Profile />} />
                 <Route path="/admin" element={<AdminDashboard />} />
-                <Route path="/lading" element={<Page />} /> {/* Route for the Lading page */}
+                <Route path="/lading" element={<Navigate to="/" replace />} />
 
                 {/* Fallback route */}
-                <Route path="*" element={<Navigate to="/lading" replace />} />
+                <Route path="*" element={<Navigate to="/" replace />} />
                 
               </Routes>
             </BrowserRouter>

@@ -13,6 +13,8 @@ import Profile from "./pages/Profile";
 import ResetPassword from "./pages/ResetPassword";
 import AdminDashboard from "./pages/AdminDashboard";
 
+import Page from "./pages/Lading"; // Import the Lading page
+
 // Create Query Client for React Query
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -37,8 +39,11 @@ export default function App() {
                 <Route path="/reset" element={<ResetPassword />} />
                 <Route path="/user/:slug" element={<Profile />} />
                 <Route path="/admin" element={<AdminDashboard />} />
+                <Route path="/lading" element={<Page />} /> {/* Route for the Lading page */}
+
                 {/* Fallback route */}
-                <Route path="*" element={<Navigate to="/" replace />} />
+                <Route path="*" element={<Navigate to="/lading" replace />} />
+                
               </Routes>
             </BrowserRouter>
           </AuthProvider>
